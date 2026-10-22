@@ -160,6 +160,11 @@ def make_bootstrap(source: Path) -> tuple[bytes, list[dict]]:
 
 
 def build(args):
+    coverage = None
+    if args.require_full_coverage:
+        from tools.audit_full_port import audit
+        with tempfile.TemporaryDirectory(prefix='autoapk-coverage-') as folder:
+            coverage = audit(Path(args.desktop_source).resolve(), Path(folder) / 'coverage.json', strict=True, runtime_source=Path(args.source).resolve())
     base = Path(args.base).resolve()
     splits = [Path(path).resolve() for path in args.split]
     output = Path(args.output).resolve()
@@ -193,6 +198,9 @@ def build(args):
                                    "Installation, login and native menu/task behavior require a separate runtime test.",
                                    "No claim of feature parity with the desktop auto.",
                                    "ZIP 16KB alignment does not establish ELF segment compatibility with every 16KB-page Android device."]})
+    if coverage:
+        report['desktop_source_coverage'] = {key: coverage[key] for key in ('source_sha256', 'action_count', 'mapped_count', 'source_coverage_complete', 'live_verified')}
+        report['desktop_source_coverage']['apk_tasks'] = len(coverage['tasks'])
     if args.application_id:
         report["limitations"].append("Separate application ID has separate data and may require new resource downloads/login; SDK and third-party sign-in compatibility require runtime testing.")
     for abi in selected:
@@ -276,6 +284,8 @@ def parser():
     cli.add_argument("--split", action="append", default=[], help="ABI-native split APK, repeat as needed; no resource splits")
     cli.add_argument("--abi", action="append", choices=sorted(ABI_TO_FRIDA), help="Limit output to supplied game ABIs")
     cli.add_argument("--source", default=str(ROOT / "src"))
+    cli.add_argument("--require-full-coverage", action="store_true", help="Refuse the build if any current desktop action is unmapped")
+    cli.add_argument("--desktop-source", default=str(ROOT.parents[1] / 'capture' / 'action_request_engine.py'))
     cli.add_argument("--application-id", help="Explicit separate package for installation beside the original game")
     cli.add_argument("--app-label", help="Label for a separate-package test copy; requires --application-id")
     cli.add_argument("--output", default=str(ROOT / "output" / "AutoTapHoa_AutoAPK_test.apk"))

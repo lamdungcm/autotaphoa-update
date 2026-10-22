@@ -52,7 +52,7 @@
     };
     P.done = function (count, label, empty) {
         count = P.integer(count);
-        return {status: count ? 'success' : 'already_done', message: count ? 'Đã ' + label + ' (' + count + ')' : (empty || 'Chưa có lượt đủ điều kiện')};
+        return {status: count ? 'success' : 'already_done', count: count, message: count ? 'Đã ' + label + ' (' + count + ')' : (empty || 'Chưa có lượt đủ điều kiện')};
     };
     P.skip = function (message) { return {status: 'skipped', message: message}; };
     P.bag = function (ctx, id) {
@@ -147,7 +147,9 @@
             } else if (field.type === 'multi') {
                 if (!Array.isArray(value) || value.some(function (v) { return typeof v !== 'string' && typeof v !== 'number'; }))
                     throw new Error('Danh sách đã chọn chưa hợp lệ');
-                value = value.slice();
+                value = value.map(String).filter(function (v, i, a) { return a.indexOf(v) === i; });
+                if (field.choices && value.some(function (v) { return !field.choices.some(function (item) { return String(item.id) === v; }); }))
+                    throw new Error('Lựa chọn không còn được hỗ trợ');
             } else if (field.type === 'orders') {
                 if (!Array.isArray(value) || value.length > 100) throw new Error('Danh sách mua chưa hợp lệ');
                 var seen = {};

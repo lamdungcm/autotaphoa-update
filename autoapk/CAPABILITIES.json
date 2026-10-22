@@ -1,0 +1,2848 @@
+{
+  "date": "2026-10-22",
+  "stage": "full_source_coverage_apk_test_waiting_phone_verification",
+  "android_tasks": [
+    {
+      "id": "mail_rewards",
+      "name": "Nhận thưởng thư",
+      "group": "Nhận thưởng",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "Claimed mail reward; repeat reported no rewards."
+    },
+    {
+      "id": "daily_signin",
+      "name": "Điểm danh",
+      "group": "Nhận thưởng",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "Claimed sign-in rewards; combined repeat reported already claimed."
+    },
+    {
+      "id": "mua_vu_ban_ron",
+      "name": "Mùa Vụ Bận Rộn",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "rewards",
+          "label": "Nhận quà miễn phí, nhiệm vụ, đóng góp và chiến lệnh",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "entrust",
+          "label": "Nhận ủy thác, ghép đội và bắt đầu",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "Read and preserved an already-running entrust; new accept/invite/start flow not tested on APK."
+    },
+    {
+      "id": "shop_free_gifts",
+      "name": "Quà miễn phí trong tiệm",
+      "group": "Nhận thưởng",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "Offline tests only; user chose to test on phone."
+    },
+    {
+      "id": "guild_likes",
+      "name": "Like công hội",
+      "group": "Nhận thưởng",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "Offline tests only; user chose to test on phone."
+    },
+    {
+      "id": "daily_task_rewards",
+      "name": "Thưởng nhiệm vụ ngày",
+      "group": "Nhận thưởng",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "Offline tests only; user chose to test on phone."
+    },
+    {
+      "id": "daily_active_rewards",
+      "name": "Mốc hoạt động ngày",
+      "group": "Nhận thưởng",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "Offline tests only; user chose to test on phone."
+    },
+    {
+      "id": "achievement_rewards",
+      "name": "Thưởng thành tựu",
+      "group": "Nhận thưởng",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "Offline tests only; user chose to test on phone."
+    },
+    {
+      "id": "secretary",
+      "name": "Thư ký",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "configurePromote",
+          "label": "Đổi cấu hình chiêu mộ",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "upgrade",
+          "label": "Nâng cấp",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "promote",
+          "label": "Chiêu mộ",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "promoteCount",
+          "label": "Số lần chiêu mộ",
+          "type": "number",
+          "default": 200,
+          "min": 1,
+          "max": 2000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "secretary_double",
+      "name": "Thư ký hai lượt",
+      "group": "Hằng ngày",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "advisor_income",
+      "name": "Nhận tiền cố vấn",
+      "group": "Hằng ngày",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "share_game",
+      "name": "Chia sẻ game",
+      "group": "Hằng ngày",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "artist_gifts",
+      "name": "Nghệ sĩ: tặng quà",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "artists",
+          "label": "Nghệ sĩ (trống = tự chọn)",
+          "type": "multi",
+          "default": [],
+          "catalog": "beauties"
+        },
+        {
+          "key": "giftId",
+          "label": "Mã vật phẩm quà",
+          "type": "number",
+          "default": 110028,
+          "min": 1,
+          "max": 999999999
+        },
+        {
+          "key": "count",
+          "label": "Tổng số quà tối đa",
+          "type": "number",
+          "default": 2,
+          "min": 0,
+          "max": 1000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "artist_skills",
+      "name": "Nghệ sĩ: kỹ năng",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "artists",
+          "label": "Nghệ sĩ (trống = tự chọn)",
+          "type": "multi",
+          "default": [],
+          "catalog": "beauties"
+        },
+        {
+          "key": "times",
+          "label": "Số lần tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 1000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "artists",
+      "name": "Nghệ sĩ: quà và kỹ năng",
+      "group": "Hằng ngày",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "vehicle_catalog",
+      "name": "Quét danh sách xe",
+      "group": "Hằng ngày",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "car_improve",
+      "name": "Cải tiến xe",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "cars",
+          "label": "Xe (trống = tự chọn)",
+          "type": "multi",
+          "default": [],
+          "catalog": "cars"
+        },
+        {
+          "key": "times",
+          "label": "Số lần tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 1000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "farm",
+      "name": "Nông trại: thu hoạch và trồng",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "sow",
+          "label": "Trồng lại sau thu hoạch",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "studio",
+      "name": "Trường quay Studio",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "quick",
+          "label": "Quay nhanh bằng lượt hiện có",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "restart",
+          "label": "Bắt đầu kịch bản mới",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "shots",
+          "label": "Số lượt quay tối đa mỗi phòng",
+          "type": "number",
+          "default": 100,
+          "min": 0,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "do_xe",
+      "name": "Đỗ xe và triển lãm",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "giao_thuong_dac_san",
+      "name": "Giao thương đặc sản",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "so_han_tranh_ba",
+      "name": "Sở Hán tranh bá",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "nho_cu_cai",
+      "name": "Nhổ củ cải",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "van_quoc_thong_thuong",
+      "name": "Vạn quốc thông thương",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "tao_minh_tinh",
+      "name": "Tạo minh tinh",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
+          "type": "number",
+          "default": 600,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "limited_quests",
+      "name": "Nhiệm vụ hạn giờ",
+      "group": "Nhận thưởng",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "guild_exp_boxes",
+      "name": "EXP công hội: mua mảnh búa",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "shopBudget",
+          "label": "Ngân sách kim cương tối đa",
+          "type": "number",
+          "default": 776,
+          "min": 0,
+          "max": 100000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "gieng_co_phat_sang",
+      "name": "Giếng cổ phát sáng",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "tranh_ba_hai_vuc",
+      "name": "Tranh bá hải vực",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "den_hoa_cau_nguyen",
+      "name": "Đèn hoa cầu nguyện",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "vo_lam_forge",
+      "name": "Võ lâm: rèn và trang bị",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "vo_lam_tower",
+      "name": "Võ lâm: vượt tháp",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "nghe_thuat_dan_gian",
+      "name": "Nghệ thuật dân gian",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "di_tich_tu_linh",
+      "name": "Di tích tứ linh",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
+          "type": "number",
+          "default": 250,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "cong_vien_ki_thu",
+      "name": "Công viên kỳ thú",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "vo_hau_khai_quoc",
+      "name": "Võ hậu khai quốc",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
+          "type": "number",
+          "default": 40,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "the_gioi_dong_vat",
+      "name": "Thế giới động vật",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
+          "type": "number",
+          "default": 5,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "khoanh_khac_am_ap",
+      "name": "Khoảnh khắc ấm áp",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "vo_lam_truyen_ky",
+      "name": "Võ lâm truyền kỳ: toàn bộ",
+      "group": "Sự kiện",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "county_limited",
+      "name": "Quà ưu đãi miễn phí",
+      "group": "Hằng ngày",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "daily_claim_all",
+      "name": "Nhận nhiệm vụ và mốc ngày",
+      "group": "Hằng ngày",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "limited_gifts_all",
+      "name": "Nhận quà hạn giờ",
+      "group": "Hằng ngày",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "mail_individual",
+      "name": "Đọc thư và nhận quà từng thư",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "deleteRead",
+          "label": "Xóa thư đã đọc, đã nhận hết quà",
+          "type": "boolean",
+          "default": false
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "training",
+      "name": "Vượt ải đào tạo",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "ticks",
+          "label": "Số ải/bước tối đa",
+          "type": "number",
+          "default": 4,
+          "min": 1,
+          "max": 1000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "visit_likes",
+      "name": "Ghé thăm và like người chơi",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "targets",
+          "label": "UID người nhận (cách nhau bởi dấu phẩy)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "serverId",
+          "label": "Máy chủ (0 = hiện tại)",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 2147483647
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "quick_buy",
+      "name": "Mua nhanh nhiều tiệm",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "orders",
+          "label": "Danh sách vật phẩm và số lượng",
+          "type": "orders",
+          "catalog": "shopGoods",
+          "default": []
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "billionaire_shop",
+      "name": "Tiệm Ai là tỷ phú",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "count",
+          "label": "Số lượng mỗi vật phẩm tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 1000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "cinema_quiz",
+      "name": "Rạp phim: doanh thu và trắc nghiệm",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "rounds",
+          "label": "Số lượt thi tối đa",
+          "type": "number",
+          "default": 2,
+          "min": 0,
+          "max": 2
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "bat_trom",
+      "name": "Bắt trộm",
+      "group": "Thị trấn",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "nem_vong",
+      "name": "Ném vòng",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "answer",
+          "label": "Mức ném vòng",
+          "type": "number",
+          "default": 2,
+          "min": 1,
+          "max": 3
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "fishing",
+      "name": "Câu cá thị trấn",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "casts",
+          "label": "Tổng lượt câu trong ngày",
+          "type": "number",
+          "default": 3,
+          "min": 0,
+          "max": 3
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "thau_phuong_trai",
+      "name": "Thấu Phương Trại",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "rolls",
+          "label": "Số lượt tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 100
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "hem_nua_dem",
+      "name": "Hẻm nửa đêm",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "hunts",
+          "label": "Số lượt bắt ma tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 100
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "film_legend",
+      "name": "Điện truyền kỳ: quỳ bái và thưởng",
+      "group": "Thị trấn",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "city_photo",
+      "name": "Chụp ảnh thị trấn",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lần tối đa",
+          "type": "number",
+          "default": 1,
+          "min": 1,
+          "max": 100
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "city_books",
+      "name": "Đọc sách thị trấn",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lần tối đa",
+          "type": "number",
+          "default": 1,
+          "min": 1,
+          "max": 100
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "city_events",
+      "name": "Tương tác phố: trộm, vòng, ảnh, sách",
+      "group": "Nhóm tác vụ",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "mini_game_thi_tran",
+      "name": "Toàn bộ mini game thị trấn",
+      "group": "Nhóm tác vụ",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "cach_cach_bo_tron",
+      "name": "Cách Cách bỏ trốn",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "moves",
+          "label": "Số bước/thao tác tối đa",
+          "type": "number",
+          "default": 250,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội khi chưa có",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "bach_xa_truyen",
+      "name": "Bạch Xà truyện",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "moves",
+          "label": "Số bước/thao tác tối đa",
+          "type": "number",
+          "default": 250,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội khi chưa có",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "dap_anh",
+      "name": "Đập ảnh",
+      "group": "Mini game ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số vật phẩm tối đa mỗi lượt",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "nem_da",
+      "name": "Ném đá",
+      "group": "Mini game ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số vật phẩm tối đa mỗi lượt",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "choi_day",
+      "name": "Chơi dây",
+      "group": "Mini game ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số vật phẩm tối đa mỗi lượt",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "nem_bao_cat",
+      "name": "Ném bao cát",
+      "group": "Mini game ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số vật phẩm tối đa mỗi lượt",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "su_kien_daily",
+      "name": "Sự kiện mini hằng ngày: tất cả",
+      "group": "Nhóm tác vụ",
+      "options": [],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "mine_explore",
+      "name": "Thăm dò mỏ",
+      "group": "Mỏ khoáng",
+      "options": [
+        {
+          "key": "rounds",
+          "label": "Số lượt thăm dò tối đa",
+          "type": "number",
+          "default": 3,
+          "min": 1,
+          "max": 100
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "advanced_mine",
+      "name": "Mỏ cao cấp: tham gia hoặc mở",
+      "group": "Mỏ khoáng",
+      "options": [
+        {
+          "key": "joins",
+          "label": "Số mỏ tham gia tối đa mỗi lượt",
+          "type": "number",
+          "default": 3,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "create",
+          "label": "Mở mỏ khi không có chỗ trống",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "radars",
+          "label": "Số radar tối đa để mở mỏ",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 1000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "banquet_hotel_guest",
+      "name": "Ăn tiệc khách sạn / liên server",
+      "group": "Tiệc",
+      "options": [
+        {
+          "key": "kind",
+          "label": "Loại tiệc",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tất cả"
+            },
+            {
+              "id": "small",
+              "name": "Tiệc nhỏ"
+            },
+            {
+              "id": "big",
+              "name": "Tiệc lớn"
+            },
+            {
+              "id": "studio",
+              "name": "Tiệc Studio"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "hosts",
+          "label": "UID chủ tiệc (trống = tất cả)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "count",
+          "label": "Số bàn tối đa mỗi lượt",
+          "type": "number",
+          "default": 10,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khi chưa có bàn phù hợp",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "banquet_event_guest",
+      "name": "Ăn tiệc sự kiện",
+      "group": "Tiệc",
+      "options": [
+        {
+          "key": "kind",
+          "label": "Loại tiệc",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tất cả"
+            },
+            {
+              "id": "small",
+              "name": "Tiệc nhỏ"
+            },
+            {
+              "id": "big",
+              "name": "Tiệc lớn"
+            },
+            {
+              "id": "studio",
+              "name": "Tiệc Studio"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "hosts",
+          "label": "UID chủ tiệc (trống = tất cả)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "count",
+          "label": "Số bàn tối đa mỗi lượt",
+          "type": "number",
+          "default": 10,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khi chưa có bàn phù hợp",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "banquet_all",
+      "name": "Ăn tiệc tổng hợp",
+      "group": "Nhóm tác vụ",
+      "options": [
+        {
+          "key": "kind",
+          "label": "Loại tiệc",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tất cả"
+            },
+            {
+              "id": "small",
+              "name": "Tiệc nhỏ"
+            },
+            {
+              "id": "big",
+              "name": "Tiệc lớn"
+            },
+            {
+              "id": "studio",
+              "name": "Tiệc Studio"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "hosts",
+          "label": "UID chủ tiệc (trống = tất cả)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "count",
+          "label": "Số bàn tối đa mỗi lượt",
+          "type": "number",
+          "default": 10,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khi chưa có bàn phù hợp",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "banquet_hotel_host",
+      "name": "Mở tiệc khách sạn",
+      "group": "Tiệc",
+      "options": [
+        {
+          "key": "kind",
+          "label": "Loại tiệc",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tất cả"
+            },
+            {
+              "id": "small",
+              "name": "Tiệc nhỏ"
+            },
+            {
+              "id": "big",
+              "name": "Tiệc lớn"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "count",
+          "label": "Số tiệc tối đa (0 = hết vật phẩm)",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khách và mở tiếp",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "banquet_studio_host",
+      "name": "Mở tiệc Studio",
+      "group": "Tiệc",
+      "options": [
+        {
+          "key": "count",
+          "label": "Số tiệc tối đa",
+          "type": "number",
+          "default": 1,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khách",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "film_cooperation",
+      "name": "Hợp tác phim",
+      "group": "Phim",
+      "options": [
+        {
+          "key": "count",
+          "label": "Số phim tối đa",
+          "type": "number",
+          "default": 3,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "maxValueK",
+          "label": "Doanh thu tối đa (nghìn/giây, 0 = tất cả)",
+          "type": "number",
+          "default": 600,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "deltaK",
+          "label": "Chênh lệch doanh thu tối đa (nghìn/giây)",
+          "type": "number",
+          "default": 100,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "pools",
+          "label": "Tìm đối tác",
+          "type": "multi",
+          "choices": [
+            {
+              "id": "1",
+              "name": "Cùng server"
+            },
+            {
+              "id": "2",
+              "name": "Liên server"
+            },
+            {
+              "id": "3",
+              "name": "Công hội"
+            }
+          ],
+          "default": [
+            "1",
+            "3"
+          ]
+        },
+        {
+          "key": "publish",
+          "label": "Đăng tìm đối tác khi chưa ghép được",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "da_ga",
+      "name": "Đá gà",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số trận tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 2000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "thuong_nhan_phi_phap",
+      "name": "Thương nhân phi pháp",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số trận tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 2000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "sieu_giong_hat",
+      "name": "Siêu giọng hát: nhận và nâng cấp",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "claim",
+          "label": "Nhận thu nhập tích lũy",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "limit",
+          "label": "Số cấp nội thất tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 0,
+          "max": 2000
+        },
+        {
+          "key": "budget",
+          "label": "Ngân sách xu giọng hát (0 = dùng số đang có)",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 9007199254740991
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "doi_tem_lay_do",
+      "name": "Đổi tem lấy đồ",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số tem tối đa",
+          "type": "number",
+          "default": 100000,
+          "min": 1,
+          "max": 1000000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "thao_lap_nhan_tai",
+      "name": "Tháo / lắp nhân tài cửa hàng",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "mode",
+          "label": "Thao tác",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tháo rồi lắp lại"
+            },
+            {
+              "id": "equip",
+              "name": "Chỉ lắp ô trống"
+            },
+            {
+              "id": "unequip",
+              "name": "Chỉ tháo"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "shops",
+          "label": "Cửa hàng (trống = tất cả đã mở)",
+          "type": "multi",
+          "default": [],
+          "catalog": "buildings"
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "water_tree",
+      "name": "Tưới cây / thu hoạch / thăm hội",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "waterLimit",
+          "label": "Số giọt nước tối đa",
+          "type": "number",
+          "default": 100000,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "visit",
+          "label": "Thăm và nhận quả cây thành viên hội",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "targets",
+          "label": "UID cây muốn thăm (trống = danh sách hội)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "members",
+          "label": "Số thành viên thăm tối đa",
+          "type": "number",
+          "default": 8,
+          "min": 0,
+          "max": 100
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "game_vuon_truong",
+      "name": "Game vườn trường",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt chơi tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 2000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "con_duong_anh_sao",
+      "name": "Con đường ánh sao",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 2000
+        },
+        {
+          "key": "draw",
+          "label": "Quay Đêm vương miện khi có vé",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "than_bep_cho_dem",
+      "name": "Thần bếp chợ đêm",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "help",
+          "label": "Số quầy hỗ trợ tối đa",
+          "type": "number",
+          "default": 20,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "items",
+          "label": "Số món dùng tối đa",
+          "type": "number",
+          "default": 100000,
+          "min": 0,
+          "max": 1000000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "rua_cham_tran",
+      "name": "Rùa chạm trán",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "games",
+          "label": "Số ván tối đa",
+          "type": "number",
+          "default": 50,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "lucky",
+          "label": "Màu may mắn",
+          "type": "choice",
+          "default": "4",
+          "choices": [
+            {
+              "id": "1",
+              "name": "Xanh lá"
+            },
+            {
+              "id": "2",
+              "name": "Xanh ngọc"
+            },
+            {
+              "id": "3",
+              "name": "Xanh"
+            },
+            {
+              "id": "4",
+              "name": "Xanh đậm"
+            },
+            {
+              "id": "5",
+              "name": "Tím"
+            },
+            {
+              "id": "6",
+              "name": "Hồng"
+            },
+            {
+              "id": "7",
+              "name": "Đỏ"
+            },
+            {
+              "id": "8",
+              "name": "Cam"
+            },
+            {
+              "id": "9",
+              "name": "Nâu"
+            },
+            {
+              "id": "10",
+              "name": "Vàng"
+            }
+          ]
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "mo_the_mua",
+      "name": "Mở thẻ mùa và nhận bộ sưu tập",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số gói tối đa",
+          "type": "number",
+          "default": 2500,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "batch",
+          "label": "Số gói mỗi lần",
+          "type": "number",
+          "default": 10,
+          "min": 1,
+          "max": 10
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "dien_thoai_phs",
+      "name": "Điện thoại PHS mạnh",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "rounds",
+          "label": "Số lượt chơi tối đa",
+          "type": "number",
+          "default": 10,
+          "min": 1,
+          "max": 200
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "lat_bai_quyet_thang",
+      "name": "Lật bài quyết thắng",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "tickets",
+          "label": "Số vé tối đa",
+          "type": "number",
+          "default": 3,
+          "min": 1,
+          "max": 1000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "con_bao_dau_tu",
+      "name": "Cơn bão đầu tư",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "weeks",
+          "label": "Số tuần giao dịch tối đa",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 200
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "strategy",
+          "label": "Chọn cổ phiếu",
+          "type": "choice",
+          "default": "news",
+          "choices": [
+            {
+              "id": "news",
+              "name": "Theo tin tức và luật bản PC"
+            },
+            {
+              "id": "cheapest",
+              "name": "Ưu tiên giá thấp"
+            }
+          ]
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "tranh_doat_mo_khoang",
+      "name": "Tranh đoạt mỏ khoáng",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "searches",
+          "label": "Số lần tìm kiếm tối đa",
+          "type": "number",
+          "default": 50,
+          "min": 0,
+          "max": 500
+        },
+        {
+          "key": "joins",
+          "label": "Số đội tham gia tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 20
+        },
+        {
+          "key": "escape",
+          "label": "Dùng thể lực hiện có để thoát bẫy",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "dinh_cao_thoi_gian",
+      "name": "Đỉnh cao thời gian",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt khám phá tối đa",
+          "type": "number",
+          "default": 60,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "upgrade",
+          "label": "Nâng quân đội, nghiên cứu và thăng thời đại",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "eventChoice",
+          "label": "Chọn nhánh khi có hai lựa chọn",
+          "type": "choice",
+          "default": "0",
+          "choices": [
+            {
+              "id": "0",
+              "name": "Nhánh đầu"
+            },
+            {
+              "id": "1",
+              "name": "Nhánh sau"
+            }
+          ]
+        },
+        {
+          "key": "reviveWaitSeconds",
+          "label": "Chờ hồi sinh tự nhiên tối đa (giây)",
+          "type": "number",
+          "default": 120,
+          "min": 0,
+          "max": 600
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "quay_tranh_duong",
+      "name": "Quầy tranh đường",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt mở tranh / quay tối đa",
+          "type": "number",
+          "default": 300,
+          "min": 1,
+          "max": 5000
+        },
+        {
+          "key": "rareRewards",
+          "label": "Ưu tiên thưởng hiếm (trống: theo bảng game)",
+          "type": "multi",
+          "default": [],
+          "catalog": "sugarRareRewards"
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "than_do_bat_da",
+      "name": "Thần đô bất dạ",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "rounds",
+          "label": "Số vòng tối đa",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "waitSeconds",
+          "label": "Chờ kết thúc mỗi vòng tối đa (giây)",
+          "type": "number",
+          "default": 180,
+          "min": 10,
+          "max": 600
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "thien_nu_u_hon",
+      "name": "Thiện Nữ U Hồn",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "freeGift",
+          "label": "Nhận quà miễn phí",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "claimTasks",
+          "label": "Nhận thưởng mốc đã hoàn thành",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "layers",
+          "label": "Số tầng tối đa",
+          "type": "number",
+          "default": 10,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "steps",
+          "label": "Số thao tác tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "tay_du_ky",
+      "name": "Tây Du Ký",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "freeGift",
+          "label": "Nhận quà miễn phí",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "claimTasks",
+          "label": "Nhận thưởng mốc đã hoàn thành",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "steps",
+          "label": "Số thao tác tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "maxRegion",
+          "label": "Dừng ở khu vực thứ",
+          "type": "number",
+          "default": 2,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "upgradeWeapons",
+          "label": "Nâng pháp bảo bằng nguyên liệu sẵn có",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "upgrades",
+          "label": "Số lần nâng pháp bảo tối đa",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "attackPlayers",
+          "label": "Tấn công khi gặp người chơi",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "nguu_ma_giang_the",
+      "name": "Ngưu Ma Giáng Thế",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "freeGift",
+          "label": "Nhận quà miễn phí",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "claimTasks",
+          "label": "Nhận thưởng mốc đã hoàn thành",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "steps",
+          "label": "Số thao tác tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "sweeps",
+          "label": "Số lượt càn quét tối đa",
+          "type": "number",
+          "default": 100,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "upgradeSword",
+          "label": "Nâng lực chiến bằng nguyên liệu sẵn có",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "useSkill",
+          "label": "Dùng chiêu thức khi đủ nộ",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "upgrades",
+          "label": "Số lần nâng lực chiến tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 0,
+          "max": 2000
+        },
+        {
+          "key": "searchNodes",
+          "label": "Giới hạn tìm chuỗi mỗi lượt",
+          "type": "number",
+          "default": 20000,
+          "min": 256,
+          "max": 100000
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "rich_quick_secret",
+      "name": "Bí Kíp và Chìa Khóa Làm Giàu",
+      "group": "Nhận thưởng",
+      "options": [
+        {
+          "key": "keys",
+          "label": "Nhận Chìa Khóa và quỹ đã đủ điều kiện",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    },
+    {
+      "id": "pig_breeding",
+      "name": "Phối Heo Giống",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "turns",
+          "label": "Số lượt thả tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "powerItems",
+          "label": "Vật phẩm hồi thể lực tối đa",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "freeGifts",
+          "label": "Nhận quà và các mốc đã đủ điều kiện",
+          "type": "boolean",
+          "default": true
+        }
+      ],
+      "source_ported": true,
+      "current_apk_live_tested": false,
+      "previous_live_scope": "No previous live test"
+    }
+  ],
+  "desktop_inventory": [
+    {
+      "desktop_method": "action_claim_mail",
+      "summary": "Nhận nhanh tất cả thư (100% Request / JS - Không click ADB).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "mail_rewards",
+      "current_apk_live_tested": false,
+      "previous_verified_scope": "Claimed mail reward; repeat reported no rewards."
+    },
+    {
+      "desktop_method": "action_claim_individual_mails",
+      "summary": "Đọc và nhận quà tất cả thư hệ thống, sau đó dọn dẹp thư đã đọc:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "mail_individual",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_secretary",
+      "summary": "Chạy Thư ký tự động siêu tốc.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "secretary",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_secretary_double",
+      "summary": "Gọi thư ký 2 lần liên tiếp (nghỉ 0.15s giữa 2 lần).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "secretary_double",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_studio",
+      "summary": "Trường quay: Bấm Kết Thúc (0x6082), Nhận thưởng phát hành (0x6098) và Quay mới (0x6080) cả 5 slot (siêu tốc).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "studio",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_visit_like",
+      "summary": "Ghé thăm và Like danh sách người chơi cá nhân (0x4ECA -> 0x00AA).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "visit_likes",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_car_improve",
+      "summary": "Cải tạo nâng cấp kỹ năng xe cộ trực tiếp từ danh sách UUID trong RAM (bỏ hẳn quét xe UI):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "car_improve",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_scan_vehicle_catalog",
+      "summary": "Đọc và lập catalog xe cộ trực tiếp từ RAM game (CarMgr.inst.model.carDict).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "vehicle_catalog",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_training",
+      "summary": "Đào tạo ải nhanh siêu tốc (100% Request: Chuẩn bị -> 0x6406 Start -> 0x6402 Nhịp -> 0x6413 Stop & Kết toán).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "training",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_artist_gift",
+      "summary": "Nghệ sĩ: Tặng quà siêu tốc (0x5EF2 -> 0x10D2).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "artist_gifts",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_artist_skill",
+      "summary": "Nghệ sĩ: Tăng kỹ năng siêu tốc (0x5EF0 -> 0x10D0).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "artist_skills",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_artist",
+      "summary": "Chạy cả tặng quà và tăng kỹ năng nghệ sĩ.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "artists",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_share_game",
+      "summary": "Chia sẻ Game nhận thưởng nhiệm vụ ngày (100% Request: 0x72AD -> 0x248D).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "share_game",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_billionaire_shop",
+      "summary": "Đổi toàn bộ vật phẩm tiệm Ai Là Tỷ Phú (Xu Nội Thất, Thẻ Phút) cho đến khi hết lượt mua (hỗ trợ mua x5).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "billionaire_shop",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_buy_shop_item",
+      "summary": "Mua vật phẩm tại bất kỳ Shop nào (Opcode 0x5E26 -> 0x1006).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "quick_buy",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_quick_buy",
+      "summary": "Mua nhanh đa Shop theo cấu hình chọn Shop, chọn Tên Vật Phẩm, chọn Số Lượng.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "quick_buy",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_quick_buy_shop",
+      "summary": "Mua nhanh các vật phẩm trong 1 Shop cụ thể.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "quick_buy",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_bi_kip_lam_giau",
+      "summary": "Nhận thưởng Bí Kíp Làm Giàu siêu tốc:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "rich_quick_secret",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_thao_lap_nhan_tai",
+      "summary": "Tự động tháo và gắn nhân tài vào các cửa hàng nhanh (100% Request / Cocos JS):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "thao_lap_nhan_tai",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_dap_anh",
+      "summary": "Sự kiện mini Đập Ảnh: Mua búa miễn phí & Đập ảnh nhận quà sạch túi (Opcode 0x5E26 -> 0x507A -> 0x025A).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "dap_anh",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_nem_bao_cat",
+      "summary": "Sự kiện mini Ném Bao Cát: Mua bao cát & Ném nhận quà (Opcode 0x5E26 -> 0x507A -> 0x025A).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "nem_bao_cat",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_phoi_heo_giong_request",
+      "summary": "Sự kiện mini Phối Heo Giống (Request thuần): Nhận quà tiệm, tự động gửi request thả heo ghép combo và nhận toàn bộ quà mốc.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "pig_breeding",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_tay_du_ky",
+      "summary": "Sự kiện Tây Du Ký (Con Đường Tây Du - Type 1043):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "tay_du_ky",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_nguu_ma_giang_the",
+      "summary": "Sự kiện Ngưu Ma Giáng Thế:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "nguu_ma_giang_the",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_thien_nu_u_hon",
+      "summary": "Sự kiện Thiện Nữ U Hồn (Phó Bản 4 Người):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "thien_nu_u_hon",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_rua_cham_tran",
+      "summary": "Sự kiện mini Rùa Chạm Trán:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "rua_cham_tran",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_cach_cach_bo_tron",
+      "summary": "Sự kiện Cách Cách Bỏ Trốn (Mê Cung 6x6):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "cach_cach_bo_tron",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_bach_xa_truyen",
+      "summary": "Sự kiện Bạch Xà Truyện (Mê Cung 6x6 & Nhận quà ngày):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "bach_xa_truyen",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_do_xe",
+      "summary": "Sự kiện Tuần: Đỗ Xe (Bãi Xe & Triển Lãm - Thứ 7 & CN):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "do_xe",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_mua_vu_ban_ron",
+      "summary": "Run Farming Season with typed native responses and live activity rules.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "mua_vu_ban_ron",
+      "current_apk_live_tested": false,
+      "previous_verified_scope": "Read and preserved an already-running entrust; new accept/invite/start flow not tested on APK."
+    },
+    {
+      "desktop_method": "action_giao_thuong_dac_san",
+      "summary": "Sự kiện Giao Thương Đặc Sản:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "giao_thuong_dac_san",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_so_han_tranh_ba",
+      "summary": "Sự kiện Sở Hán Tranh Bá:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "so_han_tranh_ba",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_dinh_cao_thoi_gian",
+      "summary": "Sự kiện Đỉnh Cao Thời Gian:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "dinh_cao_thoi_gian",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_quay_tranh_duong",
+      "summary": "Sự kiện Quầy Tranh Đường:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "quay_tranh_duong",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_con_bao_dau_tu",
+      "summary": "Sự kiện Cơn Bão Đầu Tư (Thị trường chứng khoán - Type 1076):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "con_bao_dau_tu",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_dien_thoai_phs",
+      "summary": "Sự kiện Điện Thoại PHS Mạnh (Type 1031):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "dien_thoai_phs",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_nho_cu_cai",
+      "summary": "Sự kiện Nhổ Củ Cải (ActivityType 1035):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "nho_cu_cai",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_tranh_doat_mo_khoang",
+      "summary": "Sự kiện Tranh Đoạt Mỏ Khoáng (ActivityType 1059 / Logistics):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "tranh_doat_mo_khoang",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_van_quoc_thong_thuong",
+      "summary": "Sự kiện Vạn Quốc Thông Thương (ActivityType 1090 / Thirteen Hongs):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "van_quoc_thong_thuong",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_choi_day",
+      "summary": "Sự kiện Chơi Dây: Nhận 10 dây miễn phí (0x5E26 ID 803100101) và chơi tự động (0x507A Item 120012).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "choi_day",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_nem_da",
+      "summary": "Sự kiện Ném Đá:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "nem_da",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_da_ga",
+      "summary": "Chức năng “Đá Gà” (Sự kiện Daily):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "da_ga",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_thuong_nhan_phi_phap",
+      "summary": "Sự kiện Daily Thương Nhân Phi Pháp (Square Night Battle):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "thuong_nhan_phi_phap",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_su_kien_daily",
+      "summary": "SỰ KIỆN DAILY: Tự động quét và thực thi toàn bộ các minigame hàng ngày (Đập Ảnh, Ném Bao Cát, Chơi Dây, Ném Đá).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "su_kien_daily",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_lat_bai_quyet_thang",
+      "summary": "Sự kiện Lật Bài Quyết Thắng: Nhận quà ngày (0x6983), dùng vé lật bài (0x507A), lật cặp thẻ nhận thưởng (0x5607).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "lat_bai_quyet_thang",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_tao_minh_tinh",
+      "summary": "Sự kiện Tạo Minh Tinh (ActivityType 1025 / Star Build 2048):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "tao_minh_tinh",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_game_vuon_truong",
+      "summary": "Sự kiện Game Vườn Trường (100% Pure Request - Zero ADB):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "game_vuon_truong",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_than_bep_cho_dem",
+      "summary": "Sự kiện Thần Bếp Chợ Đêm (100% Pure Request - Zero ADB):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "than_bep_cho_dem",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_mo_the_mua",
+      "summary": "Sự kiện Mở Thẻ Mùa (Sưu tập thẻ): Mở toàn bộ các gói thẻ (Opcode 0x72D1).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "mo_the_mua",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_mini_game_thi_tran",
+      "summary": "Mini Game Thị Trấn: Gộp toàn bộ các hoạt động thị trấn hàng ngày.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "mini_game_thi_tran",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_advisor_money",
+      "summary": "Nhận tiền cố vấn (0x6C18 -> 0x1DF8 & UI click va li tiền tích lũy).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "advisor_income",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_daily_quick_claim",
+      "summary": "Nhận nhanh nhiệm vụ ngày (0x52D8 -> 0x04B8).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "daily_claim_all",
+      "current_apk_live_tested": false,
+      "previous_verified_scope": "Offline tests only. See FEATURES_20261022.md for exact scope."
+    },
+    {
+      "desktop_method": "action_daily_checkin",
+      "summary": "Điểm danh ngày: Lịch Báo Danh (0x6114 -> 0x12F4) & Đăng nhập ngày (0x507D -> 0x025D).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "daily_signin",
+      "current_apk_live_tested": false,
+      "previous_verified_scope": "Claimed sign-in rewards; combined repeat reported already claimed."
+    },
+    {
+      "desktop_method": "action_nhan_qua_han_gio",
+      "summary": "Tổng hợp toàn diện 'Nhận Quà Hạn Giờ':",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "limited_gifts_all",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_limited_quests",
+      "summary": "Nhiệm vụ hạn giờ: Quét và nhận toàn bộ các mốc hoàn thành của Nhiệm Vụ Hạn Giờ (Type 6 / N.Vụ Hạn Giờ).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "limited_quests",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_county_limited",
+      "summary": "Huyện thành / Màn chính - Mở Hộp quà Nạp Hạn Giờ trên banner Quà Ưu Đãi (100% Request: 0x5E26 -> 0x1006).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "county_limited",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_shop_free_gift",
+      "summary": "Tiệm - Nhận quà miễn phí hàng ngày (100% Request: 0x7105 sync -> 0x5E26 -> 0x1006).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "shop_free_gifts",
+      "current_apk_live_tested": false,
+      "previous_verified_scope": "Offline tests only. See FEATURES_20261022.md for exact scope."
+    },
+    {
+      "desktop_method": "action_film_legend",
+      "summary": "Điện Truyền Kỳ: Quét nhanh & Nhận thưởng & Quỳ bái siêu tốc (0x1E8869 -> 0x1E8870 -> 0x1E886B -> 0x566F).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "film_legend",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_guild_like",
+      "summary": "Like công hội / cán sự công hội (S_UNION_THUMPS_UP 0x5698 qua GuildNetUtil.guildClickLikeHuman).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "guild_likes",
+      "current_apk_live_tested": false,
+      "previous_verified_scope": "Offline tests only. See FEATURES_20261022.md for exact scope."
+    },
+    {
+      "desktop_method": "action_mine_explore",
+      "summary": "Thăm dò mỏ (Tối đa 3 lượt/ngày, mỗi lượt dò 7 vị trí, dừng khi thấy mỏ, tự nhận rương phụ).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "mine_explore",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_mo_cao_cap",
+      "summary": "Mỏ cao cấp:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "advanced_mine",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_farm",
+      "summary": "Ruộng đồng: Thu hoạch và Gieo trồng lại 100% THUẦN REQUEST & ĐỌC ĐÚNG DATA GAME TỪNG NICK.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "farm",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_cinema_quiz",
+      "summary": "Rạp Phim: Nhận doanh thu và thi trắc nghiệm (Quiz 8 câu / lượt, đúng 2 lượt/ngày).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "cinema_quiz",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_fishing",
+      "summary": "Minigame Câu cá thị trấn (0x6561 / 0x6560):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "fishing",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_thau_phuong_trai",
+      "summary": "Minigame Thấu Phương Trại siêu tốc: Mở bàn cờ (0x734C) và gieo xúc xắc (0x734D).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "thau_phuong_trai",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_hem_nua_dem",
+      "summary": "Minigame Hẻm Nửa Đêm (Soul House):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "hem_nua_dem",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_bat_trom",
+      "summary": "Minigame Bắt Trộm: Mỗi ngày chỉ nhận thưởng thành công 1 lần.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "bat_trom",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_nem_vong",
+      "summary": "Minigame Ném Vòng: Mỗi ngày nhận thưởng thành công 1 lần.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "nem_vong",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_city_events",
+      "summary": "Tương tác phố thị trấn: Bắt trộm, Ném vòng, Chụp ảnh, Đọc sách.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "city_events",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_water_tree",
+      "summary": "Minigame Tưới Cây: Quy trình chuẩn canonical với opcode 32-bit (S_PLANT_TREE_*).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "water_tree",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_phoi_heo_giong",
+      "summary": "Tự động chơi sự kiện Phối Heo Giống qua Request (100% thuần request, an toàn không chạm UI, không kẹt màn hình).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "pig_breeding",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_sieu_giong_hat",
+      "summary": "15. Nhận và nâng cấp giọng hát (Siêu Giọng Hát):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "sieu_giong_hat",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_mo_tiec_studio",
+      "summary": "25. Auto mở tiệc quay studio (100% Live In-Memory Data - Zero File):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "banquet_studio_host",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_an_tiec_lien_server",
+      "summary": "Ăn tiệc liên server:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "banquet_hotel_guest",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_doi_tem_lay_do",
+      "summary": "Sự kiện tháng: Đổi tem lấy đồ.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "doi_tem_lay_do",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_exp_cong_hoi_mua_manh_bua",
+      "summary": "Sự kiện hội: EXP Công Hội mua mảnh búa (gói 2001101801, hạn 2 lần/ngày).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "guild_exp_boxes",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_gieng_co_phat_sang",
+      "summary": "Sự kiện tháng: Giếng cổ phát sáng.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "gieng_co_phat_sang",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_tranh_ba_hai_vuc",
+      "summary": "Sự kiện tổ đội: Tranh bá hải vực.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "tranh_ba_hai_vuc",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_hop_tac_phim",
+      "summary": "Tự động hợp tác phim thông minh:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "film_cooperation",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_an_tiec_lsv",
+      "summary": "Ăn tiệc Khách Sạn (Liên Server).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "banquet_hotel_guest",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_an_tiec_su_kien",
+      "summary": "Ăn tiệc Sự Kiện (Đọ Sức Nhà Hàng / Lưu Thủy Yến).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "banquet_event_guest",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_an_tiec_tong_hop",
+      "summary": "Thực thi Tính Năng Ăn Tiệc Tổng Hợp (Tự động quét cả Sự Kiện & Khách Sạn):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "banquet_all",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_mo_tiec_khach_san",
+      "summary": "Tự động mở tiệc tại Khách Sạn (Huyện Thành >> Khách Sạn >> Mời khách ăn tiệc):",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "banquet_hotel_host",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_den_hoa_cau_nguyen",
+      "summary": "Sự kiện Đèn Hoa Cầu Nguyện:",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "den_hoa_cau_nguyen",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_vo_lam_truyen_ky",
+      "summary": "Sự kiện Võ Lâm Truyền Kỳ (100% Request - Thuần Packet).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "vo_lam_truyen_ky",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_con_duong_anh_sao",
+      "summary": "Sự kiện Con Đường Ánh Sao (100% Request / Cocos JS - Thuần Packet).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "con_duong_anh_sao",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_nghe_thuat_dan_gian",
+      "summary": "Sự kiện Nghệ Thuật Dân Gian (Thực thi 100% thật qua Cocos GameNetUtil / Packet).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "nghe_thuat_dan_gian",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_di_tich_tu_linh",
+      "summary": "Sự kiện Di Tích Tứ Linh (Thực thi 100% thật qua Cocos GameNetUtil / Packet).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "di_tich_tu_linh",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_cong_vien_ki_thu",
+      "summary": "Sự kiện Công Viên Kỳ Thú (Thực thi 100% thật qua Cocos GameNetUtil / Match-3).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "cong_vien_ki_thu",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_than_do_bat_da",
+      "summary": "Tham gia Thần Đô Bất Dạ trong sự kiện Võ Hậu Khai Quốc.",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "than_do_bat_da",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_vo_hau_khai_quoc",
+      "summary": "Sự kiện Võ Hậu Khai Quốc (ActivityType 1053, SYSTEM_243).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "vo_hau_khai_quoc",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_the_gioi_dong_vat",
+      "summary": "Sự kiện Thế Giới Động Vật (ActivityType 1042, SYSTEM_213).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "the_gioi_dong_vat",
+      "current_apk_live_tested": false
+    },
+    {
+      "desktop_method": "action_khoanh_khac_am_ap",
+      "summary": "Sự kiện Khoảnh Khắc Ấm Áp (Hoàn Trả Trang Phục / SkinRebate - Type 22).",
+      "android_status": "source_mapped_phone_test_pending",
+      "android_task": "khoanh_khac_am_ap",
+      "current_apk_live_tested": false
+    }
+  ],
+  "parity": "93/93 current PC action methods mapped; full gameplay parity is not verified.",
+  "runtime_environment": "LDPlayer Android 9/API 28, x86",
+  "physical_phone_verified": false,
+  "separate_package_variant": {
+    "name": "AutoTapHoa_AutoAPK_song_song_test.apk",
+    "package": "com.longca.taphoa.auto",
+    "label": "Tiệm Tạp Hóa Auto",
+    "sha256": "3f82f4f91b46b2ee51d11eb8241ab230c0ff372a3934d14c24d1be0bfdd11d80",
+    "bytes": 1099715691,
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86",
+      "x86_64"
+    ],
+    "signature_verified": true,
+    "installed_on_ldplayer_x86": true,
+    "existing_package_unchanged": true,
+    "coinstalled_package_is_previous_test_mod": true,
+    "publisher_signed_game_coinstall_tested": false,
+    "startup_and_auto_bubble_verified": true,
+    "login_screen_verified": true,
+    "guest_result": "SDK requested user identity/verification form; no fields filled or verification sent",
+    "logged_in": false,
+    "native_tasks_verified_on_this_variant": false,
+    "physical_phone_verified": false,
+    "data_shared_with_original": false
+  },
+  "phone_install_report": "PHONE_INSTALL_20261022.md",
+  "feature_report": "FULL_PORT_STATUS.md",
+  "task_count": 96,
+  "current_build_runtime_verified": false,
+  "previous_live_test_scope": "The first three tasks have the previous x86 APK evidence described in RUNTIME_TEST_20261022.md; the new eight-task artifact has not been run on a device.",
+  "phone_test_choice": "User chose to build and test on phone personally.",
+  "current_build": {
+    "name": "AutoTapHoa_AutoAPK_full_chuc_nang_test.apk",
+    "bytes": 1130068031,
+    "sha256": "3dccdb2d5a8450c3ab022b5c672b4f578240ed37a2b4b66a29d5d670a6466a03",
+    "package": "com.longca.taphoa.auto",
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86",
+      "x86_64"
+    ],
+    "same_test_signer_as_previous_clone": true,
+    "embedded_sources_match_current": true,
+    "source_count": 32,
+    "registered_tasks": 96,
+    "runtime_tested": false,
+    "source_coverage_complete": true
+  },
+  "previous_eight_task_build": {
+    "name": "AutoTapHoa_AutoAPK_8_chuc_nang_test.apk",
+    "bytes": 1099780072,
+    "sha256": "ecea5dd03c1edf200477a8488456ae2853429a8e91a73f396ab519151c500673",
+    "package": "com.longca.taphoa.auto",
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86",
+      "x86_64"
+    ],
+    "same_test_signer_as_previous_clone": true,
+    "embedded_sources_match_current": true,
+    "source_count": 5,
+    "registered_tasks": 8,
+    "runtime_tested": false,
+    "new_tasks_live_tested": false
+  },
+  "source_methods_mapped": 93,
+  "source_methods_total": 93,
+  "source_coverage_complete": true,
+  "tests": {
+    "javascript": 191,
+    "python": 22,
+    "actual_game_claim": "No new runtime test of the full build"
+  }
+}

@@ -88,11 +88,14 @@ test('Cocos menu preserves selection, run controls, scrolling and scene lifecycl
     let notify;
     let runIds;
     let stops = 0;
+    let owner = '100', saved = {pools: ['1'], enabled: true};
 
     const core = {
         tasks: Array.from({ length: 20 }, (_, index) => ({
             id: 'task' + index,
             name: 'Tác vụ ' + index,
+            group: index % 2 ? 'Sự kiện' : 'Hằng ngày',
+            options: index === 0 ? [{key: 'pools', label: 'Nơi tìm', type: 'multi', choices: [{id: '1', name: 'Cùng server'}, {id: '3', name: 'Công hội'}]}, {key: 'enabled', label: 'Tùy chọn', type: 'boolean'}] : [],
             run() {}
         })),
         settings: { selected: [] },
@@ -112,6 +115,10 @@ test('Cocos menu preserves selection, run controls, scrolling and scene lifecycl
         },
         stop() { stops++; this.state.running = false; notify(); }
     };
+    core.getTaskOptions = () => JSON.parse(JSON.stringify(saved));
+    core.getConfigurationToken = () => owner;
+    core.configureTask = (id, values, token) => { if (token !== owner) throw Error('Nhân vật đã thay đổi'); saved = JSON.parse(JSON.stringify(values)); };
+    core.getCatalog = () => { throw Error('Fixed choices must not load a remote catalog'); };
 
     const win = {
         AutoAPK: core,
@@ -175,6 +182,21 @@ test('Cocos menu preserves selection, run controls, scrolling and scene lifecycl
     viewport.emit('start', { x: 0, y: 0 });
     viewport.emit('end', { x: 0, y: 0 });
     assert.equal(core.settings.selected.length, 1);
+
+    // Changing groups keeps selections elsewhere and selects only the visible group.
+    press(find('TaskGroup')); assert.equal(find('TaskContent').children.filter(n => n.name === 'TaskRow').length, 10);
+    press(find('TaskGroup')); assert.equal(find('TaskContent').children.filter(n => n.name === 'TaskRow').length, 10);
+    press(find('SelectAll')); assert(core.settings.selected.filter(id => Number(id.slice(4)) % 2).length === 10);
+    press(find('TaskGroup')); assert.equal(find('TaskContent').children.filter(n => n.name === 'TaskRow').length, 20);
+    const freshViewport = find('TaskViewport');
+    const openConfig = () => { freshViewport.emit('start', {x: freshViewport.width / 2 - 25, y: freshViewport.height / 2 - 24}); freshViewport.emit('end', {x: freshViewport.width / 2 - 25, y: freshViewport.height / 2 - 24}); };
+    openConfig(); assert(find('Configuration'));
+    press(find('OptionList')); assert(find('CatalogBack'));
+    press(find('CatalogItem')); press(find('CatalogBack')); press(find('OptionBoolean')); press(find('SaveConfig'));
+    assert.deepEqual(saved, {pools: [], enabled: false}); assert(!find('Configuration'));
+    openConfig(); press(find('OptionBoolean')); press(find('CancelConfig')); assert.equal(saved.enabled, false);
+    openConfig(); owner = '200'; press(find('SaveConfig')); assert(find('Configuration')); assert.match(find('ConfigStatus').getComponent(Label).string, /Nhân vật/);
+    press(find('CancelConfig')); owner = '100';
 
     core.state.logs = ['0x6D08 userId 12345678901234'];
     notify();

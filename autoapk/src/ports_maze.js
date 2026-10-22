@@ -33,7 +33,10 @@
             reply = await P.packet(ctx, 'S_ACTIVITY_TEAM_JOIN', {activityId: activityId, teamId: team.teamId});
             if (reply.ret === 0) return keep(reply.team || reply.teamTerm && reply.teamTerm.team);
         }
-        var name = 'Auto ' + ctx.uid.slice(-4) + ' ' + Math.floor(Math.random() * 10000);
+        var maxName = P.integer(mgr.getTeamNameMax(activityId), 1);
+        var createCount = P.integer(mgr.getCreateCount(activityId)), cost = P.number(mgr.getCostCount(activityId, createCount));
+        if (cost > 0) throw new Error('Tạo đội đang cần phí; anh tạo/chọn đội trong game trước');
+        var name = ('A' + ctx.uid.slice(-3) + Math.floor(Math.random() * 100)).slice(0, Math.min(6, maxName));
         reply = await P.accept(ctx, 'S_ACTIVITY_TEAM_CREATE', {activityId: activityId, name: name, joinNeedApply: false, titleNeed: 0});
         return keep(reply.team);
     };

@@ -23,6 +23,7 @@
     var selected = {};
     var selectionLoaded = false;
     var taskSignature = '';
+    var taskGroup = '';
     var accountName = '';
     var localStatus = '';
     var localError = false;
@@ -80,6 +81,8 @@
     function getState() {
         return core && core.state ? core.state : {};
     }
+
+    function visibleTasks() { return tasks().filter(function (task) { return !taskGroup || (task.group || 'Nhận thưởng') === taskGroup; }); }
 
     function running() { return getState().running === true; }
 
@@ -239,7 +242,7 @@
         listContent.removeAllChildren();
         rows = [];
         var s = dimensions.scale;
-        var available = tasks();
+        var available = visibleTasks();
         var width = viewport.width;
         available.forEach(function (task, index) {
             var row = node('TaskRow', listContent, width - 2 * s, rowHeight - 5 * s,
@@ -360,7 +363,7 @@
             } else if (field.type === 'multi' || field.type === 'orders') {
                 button(box, 'OptionList', 'Chọn / sửa (' + value.length + ' mục)', pw - 40 * s, 40 * s, 0, y, 'blue', function () {
                     try {
-                        editor.catalogRows = core.getCatalog(field.catalog); editor.field = field;
+                        editor.catalogRows = field.choices ? field.choices.map(function (item) { return {id: item.id, name: item.name, group: ''}; }) : core.getCatalog(field.catalog); editor.field = field;
                         editor.mode = 'catalog'; editor.filter = ''; editor.catalogPage = 0; editor.error = ''; drawEditor();
                     } catch (_) { editor.error = 'Chưa đọc được danh sách. Anh kiểm tra chức năng đã mở trong game.'; drawEditor(); }
                 });
@@ -386,7 +389,7 @@
     function update() {
         if (!valid(root) || !core) { return; }
         var available = tasks();
-        var signature = available.map(function (task) { return task.id + ':' + task.name; }).join('|');
+        var signature = taskGroup + '|' + available.map(function (task) { return task.id + ':' + task.name + ':' + task.group; }).join('|');
         if (signature !== taskSignature) {
             taskSignature = signature;
             buildRows();
@@ -405,9 +408,11 @@
             (total ? 'Tiến trình: ' + done + '/' + total : 'Đã chọn ' + selectedIds().length + ' tác vụ');
         refs.start.setEnabled(!isRunning && selectedIds().length > 0);
         refs.stop.setEnabled(isRunning);
-        refs.selectAll.setEnabled(!isRunning && available.length > 0);
+        var visible = visibleTasks(), checkedVisible = visible.filter(function (task) { return !!selected[task.id]; }).length;
+        refs.selectAll.setEnabled(!isRunning && visible.length > 0);
         refs.check.setEnabled(!checking);
-        refs.selectAll.label.string = available.length && selectedIds().length === available.length ? 'Bỏ chọn' : 'Chọn tất cả';
+        refs.selectAll.label.string = visible.length && checkedVisible === visible.length ? 'Bỏ chọn' : 'Chọn nhóm';
+        refs.group.label.string = (taskGroup || 'Tất cả chức năng') + ' · ' + visible.length + ' mục  ›';
         var logs = Array.isArray(state.logs) ? state.logs.map(logText).filter(Boolean).slice(-3) : [];
         refs.logs.string = logs.length ? logs.join('\n') : 'Kết quả từng tác vụ sẽ xuất hiện ở đây.';
         refs.bubbleLabel.string = isRunning ? 'Auto\n' + done + '/' + total : 'Auto';
@@ -500,13 +505,17 @@
         refs.selectAll = button(panel, 'SelectAll', 'Chọn tất cả', 114 * s, 30 * s,
             pw / 2 - 76 * s, ph / 2 - 124 * s, 'row', function () {
                 if (running()) { return; }
-                var all = tasks();
-                var deselect = selectedIds().length === all.length;
+                var all = visibleTasks();
+                var deselect = all.every(function (task) { return !!selected[task.id]; });
                 all.forEach(function (task) { selected[task.id] = !deselect; });
                 persistSelection(); update();
             });
 
-        var top = ph / 2 - 150 * s;
+        refs.group = button(panel, 'TaskGroup', '', pw - 36 * s, 30 * s, 0, ph / 2 - 162 * s, 'blue', function () {
+            var groups = ['']; tasks().forEach(function (task) { var group = task.group || 'Nhận thưởng'; if (groups.indexOf(group) < 0) groups.push(group); });
+            taskGroup = groups[(groups.indexOf(taskGroup) + 1) % groups.length]; listOffset = 0; update();
+        });
+        var top = ph / 2 - 184 * s;
         var bottom = -ph / 2 + 239 * s;
         listHeight = Math.max(74 * s, top - bottom);
         rowHeight = 48 * s;

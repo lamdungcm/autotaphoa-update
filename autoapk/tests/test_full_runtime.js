@@ -43,6 +43,23 @@ test('failed preference write leaves in-memory configuration unchanged', () => {
     h.api.configureTask('c', {n: 2}); h.root.cc.sys.localStorage.setItem = () => { throw Error('disk full'); };
     assert.throws(() => h.api.configureTask('c', {n: 5}), /lưu/); assert.equal(h.api.getTaskOptions('c').n, 2);
 });
+
+test('fixed multiple choices are canonical, unique and reject unsupported values', () => {
+    const h = setup(), schema = [{key: 'pools', type: 'multi', choices: [{id: '1'}, {id: '3'}], default: []}];
+    assert.deepEqual(plain(h.P.options(schema, {pools: [1, '1', 3]})), {pools: ['1', '3']});
+    assert.throws(() => h.P.options(schema, {pools: ['999']}), /không còn/);
+});
+
+test('a completed root task cannot use its saved context during a later root task', async () => {
+    const h = setup(); let previous, checked = false;
+    h.P.register({id: 'first', name: 'First'}, async ctx => { previous = ctx; return h.P.done(1, 'first'); });
+    h.P.register({id: 'next', name: 'Next'}, async ctx => {
+        assert.throws(() => previous.check(), /đã kết thúc/);
+        assert.throws(() => previous.call('Missing', 'Missing', 'mutate', []), /đã kết thúc/);
+        ctx.check(); checked = true; return h.P.done(1, 'next');
+    });
+    assert.equal((await h.api.runSelected(['first', 'next'])).status, 'success'); assert(checked); assert.equal(h.calls.length, 0);
+});
 test('composite uses each child settings and detects cycles', async () => {
     const h = setup(), seen = [];
     h.P.register({id: 'child', name: 'Child', options: [h.P.numOption('n', 'N', 2, 10)]}, async ctx => { seen.push(ctx.options.n); return h.P.done(1, 'child'); });
@@ -109,5 +126,43 @@ test('closing scope removes only the event listeners created by that scope', () 
     h.modules.EventMgr = {EventMgr: {inst: {on: (...args) => registered.push(args), off: (...args) => removed.push(args)}}};
     const scope = h.P.nativeScope(h.ctx); scope.require('EventMgr').EventMgr.inst.on('event', () => {}, {});
     assert.equal(registered.length, 1); scope.close(); assert.deepEqual(removed, registered);
+});
+
+test('worker purchase budget reads the native diamond currency and refuses prestige before send', async () => {
+    const h = setup(); h.modules.Protocol.Protocol.S_SHOP_BUY_GOODS = 33;
+    h.modules.GoodsConfig = {GoodsConfig: {ITEM_INGOTS_ID: 101001}};
+    h.modules.DBUtil = {DBUtil: {getShop: () => ({price: '101001=388', priceAdd: 0, rechargeId: 0})}};
+    let currency = 101001, sent = 0;
+    h.modules.GoodsUtil = {GoodsUtil: {createRewardsList: () => [{id: currency, count: 388}]}};
+    h.P.packet = async (ctx, symbol, body) => { sent++; return {ret: 0, shopGoodsId: body.shopGoodsId, count: body.count, goodsDeatil: '120001=1'}; };
+    const scope = h.P.nativeScope(h.ctx, {shopBudget: 388});
+    await scope.require('GameNetUtil').GameNetUtil.syncSeqSendMsg(33, {shopGoodsId: 1, count: 1});
+    await assert.rejects(scope.require('GameNetUtil').GameNetUtil.syncSeqSendMsg(33, {shopGoodsId: 1, count: 1}), /vượt ngân sách/); assert.equal(sent, 1); scope.close();
+    currency = 101002; const next = h.P.nativeScope(h.ctx, {shopBudget: 1000});
+    await assert.rejects(next.require('GameNetUtil').GameNetUtil.syncSeqSendMsg(33, {shopGoodsId: 1, count: 1}), /tài nguyên khác/); assert.equal(sent, 1); next.close();
+});
+
+test('worker mutation budget is enforced even if the desktop loop ignores params.limit', async () => {
+    const h = setup(); let sent = 0;
+    h.P.packet = async () => { sent++; return {ret: 0, power: 9}; };
+    const scope = h.P.nativeScope(h.ctx, {mutationLimit: 1}), net = scope.require('GameNetUtil').GameNetUtil;
+    await net.syncSeqSendMsg(2, {times: 1});
+    await assert.rejects(net.syncSeqSendMsg(2, {times: 1}), /giới hạn lệnh/);
+    assert.equal(sent, 1); assert.equal(scope.getFault().autoapkCode, 'budget'); scope.close();
+});
+
+test('worker receipt rejects an echoed request identifier and ACK without business data', () => {
+    const h = setup(); h.P.workers = {}; h.load('ports_workers');
+    assert.equal(h.P.stateReceipt({symbol: 'S_EVENT_START', response: {ret: 0, activityId: 123, count: 1}}), false);
+    assert.equal(h.P.stateReceipt({symbol: 'S_EVENT_START', response: {ret: 0, power: 9, info: {round: 2}}}), true);
+});
+
+test('a task cannot report success with an unawaited native operation still in flight', async () => {
+    const h = setup(); let settle, next = false;
+    h.modules.Slow = {Slow: {send: () => new Promise(resolve => { settle = resolve; })}};
+    h.P.register({id: 'bad', name: 'Bad'}, async ctx => { ctx.call('Slow', 'Slow', 'send', []).catch(() => {}); return h.P.done(1, 'bad'); });
+    h.P.register({id: 'next', name: 'Next'}, async () => { next = true; return h.P.done(1); });
+    assert.equal((await h.api.runSelected(['bad', 'next'])).status, 'failed'); assert(!next); assert(h.api.inspect().pending);
+    settle({ret: 0}); await h.tick(); assert(!h.api.inspect().pending);
 });
 module.exports = {setup, plain};

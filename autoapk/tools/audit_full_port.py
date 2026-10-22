@@ -9,7 +9,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def audit(source: Path, output: Path, strict: bool = False):
+def audit(source: Path, output: Path, strict: bool = False, runtime_source: Path | None = None):
     desktop_text = source.read_text(encoding='utf-8')
     actions = sorted(n.name for n in ast.walk(ast.parse(desktop_text)) if isinstance(n, ast.FunctionDef) and n.name.startswith('action_'))
     script = '''const fs=require('fs'),vm=require('vm'),path=require('path');
@@ -26,7 +26,7 @@ process.stdout.write(JSON.stringify({version:api.version,mapping:api.port.deskto
         startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
         startup.wShowWindow = subprocess.SW_HIDE
         options = {'startupinfo': startup, 'creationflags': 0x08000000}
-    completed = subprocess.run(['node', '-e', script, str(ROOT / 'src')], check=True, capture_output=True, encoding='utf-8', **options)
+    completed = subprocess.run(['node', '-e', script, str(runtime_source or ROOT / 'src')], check=True, capture_output=True, encoding='utf-8', **options)
     data = json.loads(completed.stdout)
     missing = [name for name in actions if name not in data['mapping']]
     stale = [name for name in data['mapping'] if name not in actions]

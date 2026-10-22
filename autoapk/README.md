@@ -5,12 +5,11 @@ Permission to publish source was explicitly confirmed on 2026-10-22. Keep releas
 
 ## Current status
 
-Work in progress. This checkpoint is **not a full-function release** and has no new APK attached.
-The source coverage audit currently maps 80 of the 93 current desktop `action_*` methods to 84 Android tasks (some tasks are substeps/composites). 13 methods remain unmapped. See `FULL_PORT_COVERAGE.json`; mapping coverage is not proof of live game execution.
+The source audit maps **93/93** current desktop `action_*` methods to **96 Android tasks** (including substeps, aliases and composites). No desktop action is unmapped. See `FULL_PORT_COVERAGE.json`. This is source coverage; **successful execution of every feature on a phone has not been established**. The APK is a private local test artifact, not a public release.
 
-133 JavaScript checks passed at this checkpoint. The existing APK packaging suite and real-phone testing must be repeated after all remaining ports are implemented. Most new task families still need their own fixture tests. No claim that all game features have run successfully is made.
+191 JavaScript checks and 22 Python packaging checks passed. Tests cover runtime/Stop/account isolation, settings/menu, event state transitions, resource receipts, mazes, team matching and packaging integrity. Several inherited desktop workers still need independent gameplay validation. No claim that unit tests prove game-server compatibility is made.
 
-The preceding eight-task APK is preserved locally. Do not replace it with an incomplete file named “full”.
+The preceding eight-task APK is preserved locally. The new test build is `AutoTapHoa_AutoAPK_full_chuc_nang_test.apk`, package `com.longca.taphoa.auto`, using the same local test signing identity and all four supported game ABIs. Build evidence is stored locally and contains exact source hashes. Its release state and phone-test limits are documented in `FULL_PORT_STATUS.md`.
 
 ## Structure
 
@@ -22,12 +21,17 @@ The preceding eight-task APK is preserved locally. Do not replace it with an inc
 - `src/desktop_workers.js`: selected current desktop event algorithms with explicit substitutions and provenance.
 - `src/ports_*.js`: task workflows and business postconditions.
 - `src/menu.js`: floating game menu with a configuration editor and catalog selection.
+- `src/ports_farming_rewards.js`: free gifts, task/contribution milestones and war-order rewards around the preserved entrust flow.
 - `tools/audit_full_port.py`: fails with `--strict` while any desktop method is missing.
 - `build.py`, `apk_tools.py`: repack an explicitly supplied game APK, include selected ABIs, align and sign the test copy.
 
 ## Local verification
 
 Use Node with `--test --test-isolation=none` and the `tests/test_*.js` file list. Use Python's unittest discovery for `test_*.py`. Windows subprocesses must be hidden.
+
+Build with `--require-full-coverage` and an explicit current desktop source; the gate audits the exact runtime source directory passed to the builder. The APK build independently checks its manifest, signatures and ZIP layout. Settings for game currency purchases are explicit; no SDK recharge flow is automated.
+
+Known limits: source coverage is not all possible game behavior. Top Era automates desktop Stage 1; optional card-selection packs remain manual. The PigPig workflow requires its real physics view. Runtime-loaded Thirteen package book configuration is required before claiming collection books. Missing or newer protocol/configuration fields stop the task instead of generating a guessed request. Broad inherited workers have a request mutation budget and still require event-specific phone tests.
 
 Build inputs, game accounts, captured network sessions, signing keys, `.local/`, output APKs and working evidence logs are excluded from this public source snapshot. Supply your own authorized game APK/current game JavaScript when reproducing a build. Keep the same local test signing key when installing later test updates over an earlier test copy.
 

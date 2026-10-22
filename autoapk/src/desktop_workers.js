@@ -634,15 +634,20 @@ return (() => {
                                         summary.stopReason = 'no_response';
                                         break;
                                     }
-                                    if (res.ret !== 0 && res.ret !== undefined) {
+                                    if (res.ret !== 0) {
                                         summary.stopReason = 'ret_' + res.ret;
                                         break;
                                     }
-                                    summary.turnsDone += (res.actuallyPluckTimes || 1);
+                                    if (!Number.isSafeInteger(res.actuallyPluckTimes) || res.actuallyPluckTimes < 0) throw new Error('Chưa có số lượt nhổ thực tế');
+                                    if (!res.actuallyPluckTimes) break;
+                                    summary.turnsDone += res.actuallyPluckTimes;
 
                                     let reportList = res.reportList || [];
                                     if (reportList.some(r => r && r.pass)) {
-                                        await gnu.syncSeqSendMsg(proto.S_PLUCK_CARROTS_NEXT_LEVEL, { activityId: actId });
+                                        let next = await gnu.syncSeqSendMsg(proto.S_PLUCK_CARROTS_NEXT_LEVEL, { activityId: actId });
+                                        if (!next || next.ret !== 0) throw new Error('Chưa xác nhận chuyển ải củ cải');
+                                        let current = await gnu.syncSeqSendMsg(proto.S_PLUCK_CARROTS_INFO, { activityId: actId });
+                                        if (!current || current.ret !== 0 || !current.info || !res.info || Number(current.info.level) <= Number(res.info.level)) throw new Error('Ải củ cải chưa tăng');
                                         summary.levelsCleared++;
                                     }
                                 }
@@ -695,7 +700,7 @@ return (() => {
                             let curEnergy = info.energy || 0;
                             if (curEnergy > 0) {
                                 // Thử 1-chạm toàn bộ (oneKey: true) trước
-                                let costOneKey = await gnu.syncSeqSendMsg(proto.S_THIRTEEN_COST_ENERGY, { activityId: actId, oneKey: true });
+                                let costOneKey = null; // Only individual, budgeted trades; never consume all energy in one request.
                                 if (costOneKey && costOneKey.ret === 0) {
                                     let remEnergy = (costOneKey.energy !== undefined) ? costOneKey.energy : 0;
                                     summary.tradesDone = Math.max(1, curEnergy - remEnergy);
@@ -706,14 +711,16 @@ return (() => {
                                         let c = await gnu.syncSeqSendMsg(proto.S_THIRTEEN_COST_ENERGY, { activityId: actId, oneKey: false });
                                         if (c && c.ret === 0) {
                                             summary.tradesDone++;
-                                            curEnergy = (c.energy !== undefined) ? c.energy : (curEnergy - 1);
+                                            if (!Number.isSafeInteger(c.energy) || c.energy >= curEnergy) throw new Error('Chưa xác nhận thể lực giao thương giảm');
+                                            curEnergy = c.energy;
                                         } else {
                                             // Hết khách thì làm mới khách để nạp đợt khách mới
                                             await gnu.syncSeqSendMsg(proto.S_THIRTEEN_REFRESH_CUSTOMER, { activityId: actId, needRemoveCustomer: false });
                                             let c2 = await gnu.syncSeqSendMsg(proto.S_THIRTEEN_COST_ENERGY, { activityId: actId, oneKey: false });
                                             if (c2 && c2.ret === 0) {
                                                 summary.tradesDone++;
-                                                curEnergy = (c2.energy !== undefined) ? c2.energy : (curEnergy - 1);
+                                                if (!Number.isSafeInteger(c2.energy) || c2.energy >= curEnergy) throw new Error('Chưa xác nhận thể lực giao thương giảm');
+                                                curEnergy = c2.energy;
                                             } else {
                                                 break;
                                             }
@@ -779,9 +786,15 @@ return (() => {
                                 if (!hadUp) break;
                             }
 
-                            // g. Nhận thưởng sổ tay đồ giám (bookId 1..15)
+                            // g. No guessed book IDs. Use actual native eligibility from the loaded package.
                             let gained = (info2 && info2.gainedBookId) || [];
-                            for (let bId = 1; bId <= 15; bId++) {
+                            let pkg = await req('ScriptPkgExport').ActivityThirteenHongs.asyncDone();
+                            let main = pkg.ActivityThirteenHongsMgr.inst.model.getMainData(actId);
+                            let bookConfigs = main.bookConfig;
+                            if (!Array.isArray(bookConfigs)) throw new Error('Chưa đọc được cấu hình sổ tay giao thương');
+                            for (let bookConfig of bookConfigs) {
+                                let bId = bookConfig.id;
+                                if (!Number.isSafeInteger(bId) || bId <= 0) throw new Error('Sổ tay giao thương chưa có mã thực tế');
                                 if (gained.includes(bId)) continue;
                                 try {
                                     let bk = await gnu.syncSeqSendMsg(proto.S_THIRTEEN_GET_BOOK_REWARD, { activityId: actId, bookId: bId });
@@ -2690,7 +2703,9 @@ return (function() {
                             // 1. Thử Vượt Nhanh (Fast Pass)
                             if (curScore >= skipScore) {
                                 actData.quickBattleSelect = true;
-                                let qRes = await wztMgr.reqChallengeCheckQuickBattle(actId);
+                                let quick = await wztMgr.reqChallengeCheckQuickBattle(actId);
+                                if (!quick || !quick.resp) throw new Error('Chưa có kết quả vượt nhanh');
+                                let qRes = quick.resp;
                                 if (qRes && qRes.ret === 0) {
                                     battlesDone++;
                                     quickBattles++;

@@ -2,25 +2,11 @@
   "source": "D:\\AUTO_TAPHOA\\capture\\action_request_engine.py",
   "source_sha256": "5fe478c27dc6d0bdd05ac083c8cf1c22dc1ee9ae7676ba7d44bf0268265619f0",
   "action_count": 93,
-  "mapped_count": 80,
-  "missing": [
-    "action_bi_kip_lam_giau",
-    "action_con_bao_dau_tu",
-    "action_dien_thoai_phs",
-    "action_dinh_cao_thoi_gian",
-    "action_lat_bai_quyet_thang",
-    "action_nguu_ma_giang_the",
-    "action_phoi_heo_giong",
-    "action_phoi_heo_giong_request",
-    "action_quay_tranh_duong",
-    "action_tay_du_ky",
-    "action_than_do_bat_da",
-    "action_thien_nu_u_hon",
-    "action_tranh_doat_mo_khoang"
-  ],
+  "mapped_count": 93,
+  "missing": [],
   "stale_mappings": [],
   "duplicate_task_ids": false,
-  "source_coverage_complete": false,
+  "source_coverage_complete": true,
   "live_verified": false,
   "version": "0.1.0",
   "mapping": {
@@ -103,7 +89,20 @@
     "action_con_duong_anh_sao": "con_duong_anh_sao",
     "action_than_bep_cho_dem": "than_bep_cho_dem",
     "action_rua_cham_tran": "rua_cham_tran",
-    "action_mo_the_mua": "mo_the_mua"
+    "action_mo_the_mua": "mo_the_mua",
+    "action_dien_thoai_phs": "dien_thoai_phs",
+    "action_lat_bai_quyet_thang": "lat_bai_quyet_thang",
+    "action_con_bao_dau_tu": "con_bao_dau_tu",
+    "action_tranh_doat_mo_khoang": "tranh_doat_mo_khoang",
+    "action_dinh_cao_thoi_gian": "dinh_cao_thoi_gian",
+    "action_quay_tranh_duong": "quay_tranh_duong",
+    "action_than_do_bat_da": "than_do_bat_da",
+    "action_thien_nu_u_hon": "thien_nu_u_hon",
+    "action_tay_du_ky": "tay_du_ky",
+    "action_nguu_ma_giang_the": "nguu_ma_giang_the",
+    "action_bi_kip_lam_giau": "rich_quick_secret",
+    "action_phoi_heo_giong_request": "pig_breeding",
+    "action_phoi_heo_giong": "pig_breeding"
   },
   "tasks": [
     {
@@ -121,8 +120,21 @@
     {
       "id": "mua_vu_ban_ron",
       "name": "Mùa Vụ Bận Rộn",
-      "group": "Nhận thưởng",
-      "options": []
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "rewards",
+          "label": "Nhận quà miễn phí, nhiệm vụ, đóng góp và chiến lệnh",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "entrust",
+          "label": "Nhận ủy thác, ghép đội và bắt đầu",
+          "type": "boolean",
+          "default": true
+        }
+      ]
     },
     {
       "id": "shop_free_gifts",
@@ -356,7 +368,7 @@
       "options": [
         {
           "key": "limit",
-          "label": "Số lượt/bước tối đa",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
           "type": "number",
           "default": 150,
           "min": 1,
@@ -371,7 +383,7 @@
       "options": [
         {
           "key": "limit",
-          "label": "Số lượt/bước tối đa",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
           "type": "number",
           "default": 150,
           "min": 1,
@@ -386,7 +398,7 @@
       "options": [
         {
           "key": "limit",
-          "label": "Số lượt/bước tối đa",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
           "type": "number",
           "default": 600,
           "min": 1,
@@ -452,7 +464,7 @@
       "options": [
         {
           "key": "limit",
-          "label": "Số lượt/bước tối đa",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
           "type": "number",
           "default": 150,
           "min": 1,
@@ -467,7 +479,7 @@
       "options": [
         {
           "key": "limit",
-          "label": "Số lượt/bước tối đa",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
           "type": "number",
           "default": 250,
           "min": 1,
@@ -482,7 +494,7 @@
       "options": [
         {
           "key": "limit",
-          "label": "Số lượt/bước tối đa",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
           "type": "number",
           "default": 150,
           "min": 1,
@@ -497,7 +509,7 @@
       "options": [
         {
           "key": "limit",
-          "label": "Số lượt/bước tối đa",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
           "type": "number",
           "default": 40,
           "min": 1,
@@ -512,7 +524,7 @@
       "options": [
         {
           "key": "limit",
-          "label": "Số lượt/bước tối đa",
+          "label": "Giới hạn lệnh thao tác mỗi lượt",
           "type": "number",
           "default": 5,
           "min": 1,
@@ -1514,6 +1526,399 @@
           "default": 10,
           "min": 1,
           "max": 10
+        }
+      ]
+    },
+    {
+      "id": "dien_thoai_phs",
+      "name": "Điện thoại PHS mạnh",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "rounds",
+          "label": "Số lượt chơi tối đa",
+          "type": "number",
+          "default": 10,
+          "min": 1,
+          "max": 200
+        }
+      ]
+    },
+    {
+      "id": "lat_bai_quyet_thang",
+      "name": "Lật bài quyết thắng",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "tickets",
+          "label": "Số vé tối đa",
+          "type": "number",
+          "default": 3,
+          "min": 1,
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "con_bao_dau_tu",
+      "name": "Cơn bão đầu tư",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "weeks",
+          "label": "Số tuần giao dịch tối đa",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 200
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "strategy",
+          "label": "Chọn cổ phiếu",
+          "type": "choice",
+          "default": "news",
+          "choices": [
+            {
+              "id": "news",
+              "name": "Theo tin tức và luật bản PC"
+            },
+            {
+              "id": "cheapest",
+              "name": "Ưu tiên giá thấp"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tranh_doat_mo_khoang",
+      "name": "Tranh đoạt mỏ khoáng",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "searches",
+          "label": "Số lần tìm kiếm tối đa",
+          "type": "number",
+          "default": 50,
+          "min": 0,
+          "max": 500
+        },
+        {
+          "key": "joins",
+          "label": "Số đội tham gia tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 20
+        },
+        {
+          "key": "escape",
+          "label": "Dùng thể lực hiện có để thoát bẫy",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "dinh_cao_thoi_gian",
+      "name": "Đỉnh cao thời gian",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt khám phá tối đa",
+          "type": "number",
+          "default": 60,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "upgrade",
+          "label": "Nâng quân đội, nghiên cứu và thăng thời đại",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "eventChoice",
+          "label": "Chọn nhánh khi có hai lựa chọn",
+          "type": "choice",
+          "default": "0",
+          "choices": [
+            {
+              "id": "0",
+              "name": "Nhánh đầu"
+            },
+            {
+              "id": "1",
+              "name": "Nhánh sau"
+            }
+          ]
+        },
+        {
+          "key": "reviveWaitSeconds",
+          "label": "Chờ hồi sinh tự nhiên tối đa (giây)",
+          "type": "number",
+          "default": 120,
+          "min": 0,
+          "max": 600
+        }
+      ]
+    },
+    {
+      "id": "quay_tranh_duong",
+      "name": "Quầy tranh đường",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt mở tranh / quay tối đa",
+          "type": "number",
+          "default": 300,
+          "min": 1,
+          "max": 5000
+        },
+        {
+          "key": "rareRewards",
+          "label": "Ưu tiên thưởng hiếm (trống: theo bảng game)",
+          "type": "multi",
+          "default": [],
+          "catalog": "sugarRareRewards"
+        }
+      ]
+    },
+    {
+      "id": "than_do_bat_da",
+      "name": "Thần đô bất dạ",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "rounds",
+          "label": "Số vòng tối đa",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "waitSeconds",
+          "label": "Chờ kết thúc mỗi vòng tối đa (giây)",
+          "type": "number",
+          "default": 180,
+          "min": 10,
+          "max": 600
+        }
+      ]
+    },
+    {
+      "id": "thien_nu_u_hon",
+      "name": "Thiện Nữ U Hồn",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "freeGift",
+          "label": "Nhận quà miễn phí",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "claimTasks",
+          "label": "Nhận thưởng mốc đã hoàn thành",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "layers",
+          "label": "Số tầng tối đa",
+          "type": "number",
+          "default": 10,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "steps",
+          "label": "Số thao tác tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "tay_du_ky",
+      "name": "Tây Du Ký",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "freeGift",
+          "label": "Nhận quà miễn phí",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "claimTasks",
+          "label": "Nhận thưởng mốc đã hoàn thành",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "steps",
+          "label": "Số thao tác tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "maxRegion",
+          "label": "Dừng ở khu vực thứ",
+          "type": "number",
+          "default": 2,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "upgradeWeapons",
+          "label": "Nâng pháp bảo bằng nguyên liệu sẵn có",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "upgrades",
+          "label": "Số lần nâng pháp bảo tối đa",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "attackPlayers",
+          "label": "Tấn công khi gặp người chơi",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "nguu_ma_giang_the",
+      "name": "Ngưu Ma Giáng Thế",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "freeGift",
+          "label": "Nhận quà miễn phí",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "claimTasks",
+          "label": "Nhận thưởng mốc đã hoàn thành",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "steps",
+          "label": "Số thao tác tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "sweeps",
+          "label": "Số lượt càn quét tối đa",
+          "type": "number",
+          "default": 100,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "upgradeSword",
+          "label": "Nâng lực chiến bằng nguyên liệu sẵn có",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "useSkill",
+          "label": "Dùng chiêu thức khi đủ nộ",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "upgrades",
+          "label": "Số lần nâng lực chiến tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 0,
+          "max": 2000
+        },
+        {
+          "key": "searchNodes",
+          "label": "Giới hạn tìm chuỗi mỗi lượt",
+          "type": "number",
+          "default": 20000,
+          "min": 256,
+          "max": 100000
+        }
+      ]
+    },
+    {
+      "id": "rich_quick_secret",
+      "name": "Bí Kíp và Chìa Khóa Làm Giàu",
+      "group": "Nhận thưởng",
+      "options": [
+        {
+          "key": "keys",
+          "label": "Nhận Chìa Khóa và quỹ đã đủ điều kiện",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "pig_breeding",
+      "name": "Phối Heo Giống",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "turns",
+          "label": "Số lượt thả tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "powerItems",
+          "label": "Vật phẩm hồi thể lực tối đa",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "freeGifts",
+          "label": "Nhận quà và các mốc đã đủ điều kiện",
+          "type": "boolean",
+          "default": true
         }
       ]
     }

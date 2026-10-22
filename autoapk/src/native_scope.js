@@ -6,7 +6,7 @@
     P.nativeScope = function (ctx, options) {
         options = options || {};
         var cache = {}, queue = Promise.resolve(), evidence = [], closed = false, fault = null, sent = 0, timers = [], removers = [];
-        var shopSpent = 0, timeoutCounter = 0, timeouts = {};
+        var shopSpent = 0, timeoutCounter = 0, timeouts = {}, mutations = 0;
         var window = Object.create(root), protocol = ctx.require('Protocol').Protocol, symbols = {};
         Object.keys(protocol).forEach(function (name) { if (/^S_/.test(name) && typeof protocol[name] === 'number') symbols[protocol[name]] = name; });
         function check() { ctx.check(); if (closed) throw new Error('Tác vụ đã kết thúc'); if (fault) throw fault; }
@@ -16,6 +16,12 @@
                 if (!symbol) throw new Error('Không xác định được thao tác trong game');
                 if (++sent > 5000) throw new Error('Đã đạt giới hạn thao tác của lượt chạy');
                 body = body || {};
+                if (!/(?:_INFO|_DATA|_LIST|_QUERY|_DETAIL|_RANK|_CONFIG)(?:_|$)/.test(symbol)) {
+                    if (options.mutationLimit != null && mutations >= P.integer(options.mutationLimit, 1)) {
+                        var limit = new Error('Đã đạt giới hạn lệnh thao tác đã đặt'); limit.autoapkCode = 'budget'; throw limit;
+                    }
+                    mutations++;
+                }
                 var cost = 0;
                 if (symbol === 'S_SHOP_BUY_GOODS') {
                     var row = ctx.require('DBUtil').DBUtil.getShop(body.shopGoodsId);
@@ -24,7 +30,8 @@
                     if (String(row.price) !== '0') {
                         if (!(Number(options.shopBudget) > 0)) throw new Error('Chưa bật ngân sách mua gói trong sự kiện');
                         var costs = ctx.require('GoodsUtil').GoodsUtil.createRewardsList(row.price);
-                        if (!Array.isArray(costs) || costs.length !== 1 || Number(costs[0].id) !== 101002) throw new Error('Gói sự kiện dùng tài nguyên khác cấu hình');
+                        var diamonds = P.integer(ctx.require('GoodsConfig').GoodsConfig.ITEM_INGOTS_ID, 1);
+                        if (!Array.isArray(costs) || costs.length !== 1 || Number(costs[0].id) !== diamonds) throw new Error('Gói sự kiện dùng tài nguyên khác cấu hình');
                         cost = P.integer(costs[0].count) * P.integer(body.count, 1);
                         if (shopSpent + cost > options.shopBudget) throw new Error('Mua gói vượt ngân sách sự kiện đã đặt');
                     }
@@ -118,7 +125,7 @@
             timers.push(id); return id;
         };
         window.clearInterval = function (id) { root.clearInterval(id); };
-        return {window: window, require: req, evidence: evidence, drain: function () { return queue.then(check); },
+        return {window: window, require: req, evidence: evidence, getFault: function () { return fault; }, drain: function () { return queue.then(check); },
             close: function () { closed = true; timeouts = {}; timers.forEach(function (id) { root.clearInterval(id); }); removers.forEach(function (fn) { fn(); }); }};
     };
 })(typeof window !== 'undefined' ? window : globalThis);

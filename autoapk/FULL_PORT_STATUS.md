@@ -1,44 +1,42 @@
-# AutoAPK — tiến độ chuyển toàn bộ chức năng
+# AutoAPK — toàn bộ danh sách chức năng PC, bản test 22/10/2026
 
-Trạng thái: ĐANG THỰC HIỆN. Không gọi bản tám mục trước là bản đầy đủ.
+## Trạng thái
 
-Source chuẩn: capture/action_request_engine.py hiện hành, 93 hàm action. Một số là alias/composite/helper, không tương đương 93 tác vụ độc lập.
+- Đã nối **93/93 hàm `action_*` PC hiện hành**, không còn hàm thiếu; menu có **96 mục**, gồm tác vụ con và nhóm/alias.
+- **191/191 kiểm tra JavaScript + 22/22 kiểm tra đóng gói Python đạt.** Đây là test cục bộ, không phải xác nhận mọi sự kiện trên game thật.
+- APK test đã build và ký bốn ABI, package `com.longca.taphoa.auto`, cùng khóa ký test với bản cài song song trước. Giữ nguyên APK tám mục.
+- User chọn tự test trên điện thoại. Chưa xác nhận bản full trên ARM/Redmi, đăng nhập hoặc mọi chức năng game. Không release/updater/merge.
+- Source được phép công khai ở `lamdungcm/autotaphoa-update`, nhánh `autoapk-full-20261022`, thư mục `autoapk/`. Checkpoint trước: `35c02d5094e220b70dd422789156848d80499009` (80/93); bản source đầy đủ thay checkpoint đó. Chỉ cập nhật nhánh source đã duyệt, không đổi main/updater.
 
-Giữ game gốc và khóa ký test; build cài song song. User tự test điện thoại. Chưa release.
+## Artifact đã kiểm tra
 
-## Kế hoạch
+- APK: `AutoTapHoa_AutoAPK_full_chuc_nang_test.apk`, 1130068031 byte, bốn ABI gồm ARM64.
+- SHA-256: `3dccdb2d5a8450c3ab022b5c672b4f578240ed37a2b4b66a29d5d670a6466a03`.
+- Chữ ký v1/v2 qua Android apksigner, kiểm tra v2 độc lập, cùng chứng thư với bản tám mục. CRC/căn chỉnh đạt; toàn bộ 32 nguồn nhúng trùng build; đọc registry từ chính payload trong APK thấy 96 mục/93 mapping.
+- Source ZIP: `AutoAPK_source_full_20261022.zip`; không chứa khóa ký/đầu vào APK/dữ liệu tài khoản.
 
-- [x] Snapshot source APK hiện hành trước sửa
-- [x] Inventory 93 hàm PC, 87 khối JS và 286 module native liên quan
-- [x] Trích schema 2357 giao thức từ game nguồn hiện hành
-- [ ] Runtime cấu hình / catalog / ngân sách / composite / Stop
-- [ ] Nhóm tác vụ ngày, cửa hàng, xe, nghệ sĩ, phim, công hội
-- [ ] Nhóm sự kiện, mini game và bộ giải
-- [ ] Đối chiếu đủ 93 hàm, đánh dấu alias và các mục đã chuyển
-- [ ] Menu cấu hình đầy đủ trên điện thoại
-- [ ] Kiểm thử, build APK và kiểm tra mã nhúng
-- [ ] Lưu source/handoff và bàn giao test
+## Nội dung hoàn tất
 
-User đã đồng ý công khai source tại `lamdungcm/autotaphoa-update`, nhánh riêng `autoapk-full-20261022`, thư mục `autoapk/` (2026-10-22). Nhánh đã tạo. Không thay updater/release. user-context chỉ lưu ghi chú và đường dẫn source.
+- Cấu hình từng nhân vật, catalog thật, giới hạn mua/lượt, chọn nhóm, lưu/hủy và chặn lưu nhầm nhân vật.
+- Stop/timeout/đổi tài khoản chặn request tiếp theo; request đã gửi phải đợi kết quả. Context tác vụ cũ không được dùng sang tác vụ mới; không báo thành công khi còn request chưa chờ.
+- Tất cả nhóm PC: thư/thư ký, tiệm, tài năng/nghệ sĩ/xe, đào tạo, phim/tiệc, nông trại/thị trấn/công hội/mỏ và các sự kiện/mini game trong inventory bên dưới.
+- Mùa Vụ: giữ nguyên luồng chọn ủy thác/ghép đội/xác nhận đang chạy; thêm quà miễn phí thực tế, nhiệm vụ/thành tựu, mốc đóng góp, chiến lệnh. Không gọi DONATE_DATA là thu hoạch hoặc coi đọc bảng xếp hạng là nhận thưởng.
+- PHS chọn cụm thật trên bảng máy chủ; đầu tư dùng tuần/ngày và số cổ phiếu/tiền thực tế; Phối Heo dùng controller/vật lý thật, không tạo score/board giả.
+- Sửa lỗi PC/native đã chứng minh: danh sách phim hợp tác đọc bằng `getMyArtwork(true)`, dailyHelpNum là lượt đã dùng, tên đội theo giới hạn native và tránh tạo đội trả phí, kiểu trận Ngưu Ma, bước Đỉnh Cao, số ô Quầy Tranh, thiệp Studio/đơn vị thời gian tiệc, tiền kim cương từ GoodsConfig.
+- Worker kế thừa có giới hạn request mutation; Vạn Quốc bỏ oneKey tiêu toàn bộ năng lượng, không tự trừ năng lượng mặc định hoặc đoán bookId1..15. Võ Hậu bóc `resp` của fastpass để tránh gửi thêm trận thường. Nhổ Củ Cải không biến số lượt0 thành1 hoặc tăng ải khi ACK.
 
-## Checkpoint hiện tại
+## Giới hạn cần test trực tiếp
 
-- `FULL_PORT_COVERAGE.json`: 80/93 hàm đã nối mã, 84 mục APK, 13 hàm còn thiếu. Đây là coverage source, không phải xác nhận game thật.
-- 133/133 kiểm tra JavaScript hiện có đạt; 39 kiểm tra mới tập trung runtime/config/transport, nhóm ngày, cây, nhân tài, tiệc/phim và xác nhận vật phẩm sự kiện.
-- Đã có source menu cấu hình nhiều trang, chọn catalog và số lượng từng món. Chưa test UI cấu hình trên máy thật.
-- `native_features.js`: 554 module native được đóng gói thành bản sao dùng transport riêng; cần tiếp tục test các manager/worker cụ thể.
-- 19 worker sự kiện đã trích từ source PC. Handler nhiệm vụ hạn giờ đã được thay bằng bản strict riêng ở `ports_events_base.js`.
-- Mới thêm BFS mê cung Cách Cách/Bạch Xà, các mini game dùng vật phẩm, nhóm thị trấn. Phần lớn nhóm này chưa có fixture test riêng.
-- Đã bổ sung mỏ, tiệc khách sạn/sự kiện/Studio, hợp tác phim, Đá gà/Thương nhân phi pháp, Siêu giọng hát, đổi tem, nhân tài, cây, vườn trường, ánh sao, rùa, mùa thẻ, chợ đêm và nhóm mini game thị trấn. Một số nhóm mới chưa có fixture riêng; chưa kiểm chứng game thật.
-- Chưa build APK mới cho full port. Bản tám chức năng trước vẫn được giữ nguyên.
+- Bản này đạt coverage source. Các worker cũ chưa đều có fixture riêng cho mọi nhánh; giao thức/cấu hình hot update có thể làm tác vụ dừng với thông báo chưa xác nhận.
+- Đỉnh Cao tự chơi Stage1 theo phạm vi PC; Stage2 không có bộ giải mới. Mùa Thẻ mở gói thường; gói chọn thẻ tùy ý vẫn chọn trong game.
+- Phối Heo cần scene vật lý thật hoạt động; tạm dừng/chuyển giao diện sẽ dừng trước khi gửi kết quả tiếp.
+- Vạn Quốc cần package runtime và cấu hình sổ tay thật. Thiếu cấu hình sẽ dừng, không thử ID bừa. Worker budget tính lệnh thao tác, không đồng nghĩa số lượt chơi/tổng vật phẩm.
+- Cài song song có dữ liệu riêng; có thể tải lại tài nguyên và đăng nhập lại. Chưa kiểm chứng tương thích SDK trên điện thoại của user.
+- Không đổi source PC, không xóa game gốc, không đưa APK/khóa ký/tài khoản/dump phiên lên repo public.
 
-### Việc tiếp theo
+## Kiểm tra / tài liệu
 
-1. Hoàn thành 13 hàm còn thiếu trong coverage JSON (phim/tiệc, mỏ, cây, nhân tài, các sự kiện còn lại).
-2. Tiếp tục kiểm tra và sửa worker PC có nhánh `ret == undefined`, tự gán hoàn thành hoặc fallback dựa trên việc chỉ gửi request. Transport đã chặn claim thiếu ID trả về, mua sai receipt và ngân sách shop không rõ.
-3. Test business postconditions của các nhóm mới; test UI cấu hình/cancel/đổi nhân vật, strict full-coverage audit.
-4. Build, đối chiếu toàn bộ mã nhúng ở bốn ABI, ký/alignment/manifest, đồng bộ bản test cho user tự test điện thoại.
-5. Commit source lên nhánh đã duyệt và cập nhật pointer user-context.
+`FULL_PORT_COVERAGE.json` là kết quả audit source. `src/bundle.json` là thứ tự mã nhúng thật. `evidence/full_port_20261022/` lưu test và build log cục bộ. `PUBLIC_SOURCE_POLICY.md` ghi phạm vi được công khai.
 
 ## Inventory PC
 

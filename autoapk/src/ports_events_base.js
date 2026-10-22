@@ -1,7 +1,7 @@
 (function (root) {
     'use strict';
     var api = root.AutoAPK, P = api.port;
-    P.claimActivity = async function (ctx, act) {
+    P.claimActivity = async function (ctx, act, allowedIds) {
         var id = P.activityId(act), mgr = P.instance(ctx, 'ActivityMgr'), util = ctx.require('ActivityTaskUtil').ActivityTaskUtil;
         var response = await P.accept(ctx, 'S_ACTIVITY_DATA', {activityId: id});
         if (!response.data || Number(response.data.activityId) !== id) throw new Error('Dữ liệu nhiệm vụ không khớp sự kiện');
@@ -9,6 +9,7 @@
         var rows = P.values(act.conditionTempDict), ids = [];
         var day = ctx.require('ActivityUtil').ActivityUtil.whichDay(act.info.beginTime);
         rows.forEach(function (condition) {
+            if (allowedIds && allowedIds.map(Number).indexOf(Number(condition.conditionId)) < 0) return;
             var data = act.getConditionData(condition.conditionId, true);
             if (!data || data.isGetReward) return;
             var requiredDay = Number(condition.paramList && condition.paramList[2]);
@@ -49,8 +50,29 @@
             if (Number(row.vipLimit) > 0 && P.instance(ctx, 'VipMgr').getVipLevel() < Number(row.vipLimit)) return;
             orders.push({id: id, count: Math.min(P.integer(row.buyLimit, 1), 10000)});
         });
-        if (orders.length) return P.buyOrders(ctx, orders);
-        return P.done(0, '', 'Không có gói miễn phí đang mở');
+        if (orders.length) return P.integer((await P.buyOrders(ctx, orders)).count);
+        return 0;
+    };
+    P.claimWarOrder = async function (ctx, act) {
+        if (typeof act.getMallListByShopType !== 'function' || !P.list(act.getMallListByShopType(1024)).length) return 0;
+        var id = P.activityId(act), mgr = P.instance(ctx, 'ActivityWarOrderMgr'), util = ctx.require('ActivityWarOrderUtil').ActivityWarOrderUtil;
+        async function read() {
+            var r = P.ret(await P.call(ctx, 'ActivityWarOrderNetUtil', 'reqGetActivityWarOrderinfo', [id, false]));
+            if (!r.warfare || Number(r.warfare.activityId) !== id) throw new Error('Dữ liệu chiến lệnh không khớp sự kiện');
+            mgr.syncWarOrderData(r.warfare); return P.fields(mgr.getWarOrderTaskData(id), ['gradeInfo', 'progress']);
+        }
+        function keys(grades) {
+            var result = [];
+            P.list(grades).forEach(function (grade) { P.list(grade.gainProgressIds).forEach(function (n) { result.push(P.integer(grade.gradeId) + ':' + P.integer(n)); }); });
+            return result;
+        }
+        var state = await read(); if (!util.canGetReward(act)) return 0;
+        var before = keys(state.gradeInfo), reply = P.ret(await P.call(ctx, 'ActivityWarOrderNetUtil', 'reqGetActivityWarOrderReward', [id, false]));
+        var received = keys(reply.gradeInfo).filter(function (key) { return before.indexOf(key) < 0; });
+        if (Number(reply.activityId) !== id || !received.length || !P.reward(reply)) throw new Error('Chiến lệnh chưa xác nhận mốc mới và thưởng');
+        var current = keys((await read()).gradeInfo);
+        if (received.some(function (key) { return current.indexOf(key) < 0; })) throw new Error('Máy chủ chưa lưu các mốc chiến lệnh vừa nhận');
+        return received.length;
     };
     P.useInventory = async function (ctx, ids, limit, batchSize) {
         var total = 0;

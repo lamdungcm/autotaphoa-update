@@ -9,8 +9,8 @@
         return Number(cfg.genre);
     }
     function available(film) { return Number(film.state) === 1 && !film.cooperation && !Number(film.applyingCooperationType); }
-    async function artworks(ctx) {
-        var data = P.ret(await P.call(ctx, 'FilmNetUtil', 'getMyArtwork', [false, false]));
+    async function artworks(ctx, cooperated) {
+        var data = P.ret(await P.call(ctx, 'FilmNetUtil', 'getMyArtwork', [!!cooperated, false]));
         return P.list(data.telecasts);
     }
     P.register({id: 'film_cooperation', name: 'Hợp tác phim', group: 'Phim', desktop: ['action_hop_tac_phim'],
@@ -37,8 +37,8 @@
                 var candidate = candidates[0];
                 var joined = P.ret(await P.call(ctx, 'FilmNetUtil', 'requestForCooperate', [id, P.id(candidate.film.id), candidate.pool, false]));
                 if (!joined.telecast || String(joined.telecast.id) !== id || !joined.telecast.cooperation) throw new Error('Chưa có phim đối tác trong kết quả hợp tác');
-                var fresh = (await artworks(ctx)).find(function (f) { return String(f.id) === id; });
-                if (!fresh || !fresh.cooperation || Number(fresh.cooperation.scriptId) !== Number(candidate.film.baseInfo.scriptId)) throw new Error('Kho phim chưa xác nhận đúng đối tác vừa ghép');
+                var fresh = (await artworks(ctx, true)).find(function (f) { return String(f.id) === id; });
+                if (!fresh || String(fresh.ownerId) !== ctx.uid || !fresh.cooperation || Number(fresh.cooperation.scriptId) !== Number(candidate.film.baseInfo.scriptId)) throw new Error('Kho phim chưa xác nhận đúng đối tác vừa ghép');
                 paired++; ctx.log('Hợp tác phim: đã ghép ' + (film.baseInfo.name || id));
             } else if (ctx.options.publish) {
                 var pool = pools[0], minimum = pool === 2 ? Math.max(0, earn - ctx.options.deltaK * 1000) : 0;

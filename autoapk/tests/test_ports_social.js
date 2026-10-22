@@ -37,7 +37,7 @@ test('film cooperation selects the nearest opposite genre and verifies the actua
     const row = (id, scriptId, earnSpeed) => ({id, ownerId: '200', minEarnSpeed: 0, baseInfo: {scriptId, earnSpeed}});
     h.modules.DBUtil = {DBUtil: {getTvStudio: id => ({genre: id === 1 || id === 2 ? 1 : 2})}};
     h.modules.FilmNetUtil = {FilmNetUtil: {
-        getMyArtwork: () => ({ret: 0, telecasts: [own()]}),
+        getMyArtwork: cooperated => ({ret: 0, telecasts: !!partner === cooperated ? [own()] : []}),
         getCooperationList: () => ({ret: 0, items: [row('22', 2, 400000), row('33', 3, 450000), row('44', 4, 401000)]}),
         requestForCooperate: (id, other) => { assert.equal(other, '44'); partner = {scriptId: 4}; return {ret: 0, telecast: own()}; }
     }};

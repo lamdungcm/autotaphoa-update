@@ -20,16 +20,18 @@
     P.stateReceipt = function (entry) {
         var r = entry.response;
         if (!r || r.ret !== 0 || /(?:_INFO|_DATA|_LIST|_QUERY|_DETAIL|_RANK)(?:_|$)/.test(entry.symbol)) return false;
+        if (entry.symbol === 'S_PLUCK_CARROTS_PLUCK') return Number(r.actuallyPluckTimes) > 0 && Array.isArray(r.reportList) && r.reportList.length > 0;
         return Object.keys(r).some(function (key) {
             var value = r[key];
-            return key !== 'ret' && value != null && (typeof value === 'object' && Object.keys(value).length > 0 || typeof value === 'string' && value.trim() !== '' || typeof value === 'number' && isFinite(value));
+            if (/^(?:ret|activityId|userId|uid|id|count|times|type|index|levelId|conditionId|shopGoodsId|heroId|ministerId|position|x|y)$/i.test(key)) return false;
+            return value != null && (typeof value === 'object' && Object.keys(value).length > 0 || typeof value === 'string' && value.trim() !== '' || typeof value === 'number' && isFinite(value));
         });
     };
     P.runWorker = async function (ctx, id, overrides) {
         var worker = P.workers[id], def = worker.definition, act = active(def, ctx);
         if (!act) return P.skip('Sự kiện chưa mở');
         if (id === 'do_xe' && [0, 6].indexOf(P.vnClock().getUTCDay()) < 0) return P.skip('Đỗ xe chỉ chạy thứ bảy và chủ nhật');
-        var scope = P.nativeScope(ctx, {shopBudget: ctx.options.shopBudget || 0}), result, returned;
+        var scope = P.nativeScope(ctx, {shopBudget: ctx.options.shopBudget || 0, mutationLimit: ctx.options.limit}), result, returned;
         var params = Object.assign({activityId: def.types.length ? P.activityId(act) : 0, limit: ctx.options.limit || def.limit || 150}, overrides || {});
         try {
             [def.result, def.error, def.doneGlobal].filter(Boolean).forEach(function (key) { scope.window[key] = undefined; });
@@ -40,6 +42,7 @@
             }
             if (returned && (returned.ok === false || returned.error || returned.err)) throw new Error('Chưa khởi động được sự kiện');
             await ctx.waitFor(function () {
+                if (scope.getFault()) throw scope.getFault();
                 if (def.error && scope.window[def.error]) throw new Error('Sự kiện đã dừng vì lỗi xử lý');
                 result = decode(scope.window[def.result]);
                 if (!result) return false;
@@ -68,13 +71,18 @@
             });
             var outcome = P.done(count, 'thực hiện thao tác sự kiện', 'Đã kiểm tra, chưa có lượt hoặc thưởng đủ điều kiện');
             outcome.message += tail; return outcome;
+        } catch (error) {
+            if (error.autoapkCode !== 'budget') throw error;
+            ctx.check(); var actions = scope.evidence.filter(P.stateReceipt).length;
+            var partial = P.done(actions, 'thực hiện lệnh sự kiện', 'Đã đạt giới hạn; chưa xác nhận thao tác thành công');
+            partial.message += ' · Đã dừng ở giới hạn lệnh đã đặt'; return partial;
         } finally { scope.close(); }
     };
     Object.keys(P.workers).forEach(function (id) {
         var def = P.workers[id].definition;
         // The two Vo Lam workers are separate configurable parts of one desktop action.
         var desktop = id === 'vo_lam_forge' || id === 'vo_lam_tower' ? [] : [def.action];
-        var options = def.limit ? [P.numOption('limit', 'Số lượt/bước tối đa', def.limit, 10000, 1)] : [];
+        var options = def.limit ? [P.numOption('limit', 'Giới hạn lệnh thao tác mỗi lượt', def.limit, 10000, 1)] : [];
         if (id === 'guild_exp_boxes') options.push(P.numOption('shopBudget', 'Ngân sách kim cương tối đa', 776, 100000));
         P.register({id: id, name: def.name, group: id === 'limited_quests' ? 'Nhận thưởng' : 'Sự kiện',
             desktop: desktop, options: options, timeoutMs: 1800000}, function (ctx) { return P.runWorker(ctx, id); });
