@@ -15,7 +15,7 @@
         return response;
     }
     function result(count, unit, empty) {
-        return {status: count ? 'success' : 'already_done', message: count ? 'Đã nhận ' + count + ' ' + unit : empty};
+        return {status: count ? 'success' : 'already_done', count: count, message: count ? 'Đã nhận ' + count + ' ' + unit : empty};
     }
     async function call(ctx, module, method, args) {
         ctx.check();
@@ -203,10 +203,10 @@
         return result(claimed, 'gói quà miễn phí', 'Không có gói quà miễn phí đủ điều kiện');
     }
 
-    api.fullClaims = {freeShop: freeShop};
-    api.registerTask({id: 'shop_free_gifts', name: 'Quà miễn phí trong tiệm', run: freeShop});
-    api.registerTask({id: 'guild_likes', name: 'Like công hội', run: guildLikes});
-    api.registerTask({id: 'daily_task_rewards', name: 'Thưởng nhiệm vụ ngày', run: function (ctx) { return claimTasks(ctx, 'TASK_TYPE_1', 'thưởng nhiệm vụ ngày'); }});
-    api.registerTask({id: 'daily_active_rewards', name: 'Mốc hoạt động ngày', run: claimActive});
-    api.registerTask({id: 'achievement_rewards', name: 'Thưởng thành tựu', run: function (ctx) { return claimTasks(ctx, 'TASK_TYPE_3', 'thưởng thành tựu'); }});
+    api.fullClaims = {freeShop: freeShop, claimTasks: claimTasks};
+    api.registerTask({id: 'shop_free_gifts', name: 'Quà miễn phí trong tiệm', repeatWithinRun: true, run: freeShop});
+    api.registerTask({id: 'guild_likes', name: 'Like công hội', repeatWithinRun: true, run: guildLikes});
+    api.registerTask({id: 'daily_task_rewards', name: 'Thưởng nhiệm vụ ngày', repeatWithinRun: true, run: function (ctx) { return claimTasks(ctx, 'TASK_TYPE_1', 'thưởng nhiệm vụ ngày'); }});
+    api.registerTask({id: 'daily_active_rewards', name: 'Mốc hoạt động ngày', repeatWithinRun: true, run: claimActive});
+    api.registerTask({id: 'achievement_rewards', name: 'Thưởng thành tựu', repeatWithinRun: true, run: function (ctx) { return claimTasks(ctx, 'TASK_TYPE_3', 'thưởng thành tựu'); }});
 })(typeof window !== 'undefined' ? window : globalThis);

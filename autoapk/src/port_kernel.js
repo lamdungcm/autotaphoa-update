@@ -179,15 +179,21 @@
             P.desktop[name] = definition.id;
         });
     };
-    P.sequence = async function (ctx, ids) {
-        var results = [], successes = 0;
+    P.sequence = async function (ctx, ids, options) {
+        var results = [], successes = 0, failures = 0;
         for (var i = 0; i < ids.length; i++) {
             ctx.check();
-            var outcome = await ctx.runTask(ids[i]);
+            var outcome;
+            try { outcome = await ctx.runTask(ids[i], undefined, {repeat: !!(options && options.repeatDuplicates && ids.slice(0, i).indexOf(ids[i]) >= 0)}); }
+            catch (error) {
+                ctx.check(); if (api.inspect().pending) throw error;
+                failures++; ctx.log((api.tasks.find(function (t) { return t.id === ids[i]; }) || {}).name + ': ' + error.message, 'error'); continue;
+            }
             if (!outcome || ['success', 'already_done', 'skipped'].indexOf(outcome.status) < 0) throw new Error('Có tác vụ con chưa xác nhận kết quả');
             results.push(outcome);
             if (outcome.status === 'success') successes++;
         }
+        if (failures) throw new Error('Có ' + failures + ' tác vụ con chưa hoàn thành; đã kiểm tra các mục còn lại');
         return successes ? P.done(successes, 'hoàn thành tác vụ con') :
             results.some(function (r) { return r.status === 'already_done'; }) ? P.done(0, '', 'Các tác vụ con đã được kiểm tra') : P.skip('Các chức năng chưa mở hoặc cần cấu hình');
     };

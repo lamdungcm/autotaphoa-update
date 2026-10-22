@@ -40,7 +40,7 @@
         return P.done(sections.length, 'xử lý nhóm công việc thư ký');
     });
     register('secretary_double', 'Thư ký hai lượt', ['action_secretary_double'], [], async function (ctx) {
-        return P.sequence(ctx, ['secretary', 'secretary']);
+        return P.sequence(ctx, ['secretary', 'secretary'], {repeatDuplicates: true});
     });
     register('advisor_income', 'Nhận tiền cố vấn', ['action_advisor_money'], [], async function (ctx) {
         var reply = await P.accept(ctx, 'S_MENTOR_GET_INCOME', {});

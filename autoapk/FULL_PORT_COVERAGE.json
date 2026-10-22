@@ -2,43 +2,21 @@
   "source": "D:\\AUTO_TAPHOA\\capture\\action_request_engine.py",
   "source_sha256": "5fe478c27dc6d0bdd05ac083c8cf1c22dc1ee9ae7676ba7d44bf0268265619f0",
   "action_count": 93,
-  "mapped_count": 58,
+  "mapped_count": 80,
   "missing": [
-    "action_an_tiec_lien_server",
-    "action_an_tiec_lsv",
-    "action_an_tiec_su_kien",
-    "action_an_tiec_tong_hop",
     "action_bi_kip_lam_giau",
-    "action_city_events",
     "action_con_bao_dau_tu",
-    "action_con_duong_anh_sao",
-    "action_da_ga",
     "action_dien_thoai_phs",
     "action_dinh_cao_thoi_gian",
-    "action_doi_tem_lay_do",
-    "action_game_vuon_truong",
-    "action_hop_tac_phim",
     "action_lat_bai_quyet_thang",
-    "action_mine_explore",
-    "action_mini_game_thi_tran",
-    "action_mo_cao_cap",
-    "action_mo_the_mua",
-    "action_mo_tiec_khach_san",
-    "action_mo_tiec_studio",
     "action_nguu_ma_giang_the",
     "action_phoi_heo_giong",
     "action_phoi_heo_giong_request",
     "action_quay_tranh_duong",
-    "action_rua_cham_tran",
-    "action_sieu_giong_hat",
     "action_tay_du_ky",
-    "action_than_bep_cho_dem",
     "action_than_do_bat_da",
-    "action_thao_lap_nhan_tai",
     "action_thien_nu_u_hon",
-    "action_thuong_nhan_phi_phap",
-    "action_tranh_doat_mo_khoang",
-    "action_water_tree"
+    "action_tranh_doat_mo_khoang"
   ],
   "stale_mappings": [],
   "duplicate_task_ids": false,
@@ -97,13 +75,35 @@
     "action_thau_phuong_trai": "thau_phuong_trai",
     "action_hem_nua_dem": "hem_nua_dem",
     "action_film_legend": "film_legend",
+    "action_city_events": "city_events",
+    "action_mini_game_thi_tran": "mini_game_thi_tran",
     "action_cach_cach_bo_tron": "cach_cach_bo_tron",
     "action_bach_xa_truyen": "bach_xa_truyen",
     "action_dap_anh": "dap_anh",
     "action_nem_da": "nem_da",
     "action_choi_day": "choi_day",
     "action_nem_bao_cat": "nem_bao_cat",
-    "action_su_kien_daily": "su_kien_daily"
+    "action_su_kien_daily": "su_kien_daily",
+    "action_mine_explore": "mine_explore",
+    "action_mo_cao_cap": "advanced_mine",
+    "action_an_tiec_lsv": "banquet_hotel_guest",
+    "action_an_tiec_lien_server": "banquet_hotel_guest",
+    "action_an_tiec_su_kien": "banquet_event_guest",
+    "action_an_tiec_tong_hop": "banquet_all",
+    "action_mo_tiec_khach_san": "banquet_hotel_host",
+    "action_mo_tiec_studio": "banquet_studio_host",
+    "action_hop_tac_phim": "film_cooperation",
+    "action_da_ga": "da_ga",
+    "action_thuong_nhan_phi_phap": "thuong_nhan_phi_phap",
+    "action_sieu_giong_hat": "sieu_giong_hat",
+    "action_doi_tem_lay_do": "doi_tem_lay_do",
+    "action_thao_lap_nhan_tai": "thao_lap_nhan_tai",
+    "action_water_tree": "water_tree",
+    "action_game_vuon_truong": "game_vuon_truong",
+    "action_con_duong_anh_sao": "con_duong_anh_sao",
+    "action_than_bep_cho_dem": "than_bep_cho_dem",
+    "action_rua_cham_tran": "rua_cham_tran",
+    "action_mo_the_mua": "mo_the_mua"
   },
   "tasks": [
     {
@@ -717,6 +717,48 @@
       "options": []
     },
     {
+      "id": "city_photo",
+      "name": "Chụp ảnh thị trấn",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lần tối đa",
+          "type": "number",
+          "default": 1,
+          "min": 1,
+          "max": 100
+        }
+      ]
+    },
+    {
+      "id": "city_books",
+      "name": "Đọc sách thị trấn",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lần tối đa",
+          "type": "number",
+          "default": 1,
+          "min": 1,
+          "max": 100
+        }
+      ]
+    },
+    {
+      "id": "city_events",
+      "name": "Tương tác phố: trộm, vòng, ảnh, sách",
+      "group": "Nhóm tác vụ",
+      "options": []
+    },
+    {
+      "id": "mini_game_thi_tran",
+      "name": "Toàn bộ mini game thị trấn",
+      "group": "Nhóm tác vụ",
+      "options": []
+    },
+    {
       "id": "cach_cach_bo_tron",
       "name": "Cách Cách bỏ trốn",
       "group": "Sự kiện",
@@ -823,6 +865,657 @@
       "name": "Sự kiện mini hằng ngày: tất cả",
       "group": "Nhóm tác vụ",
       "options": []
+    },
+    {
+      "id": "mine_explore",
+      "name": "Thăm dò mỏ",
+      "group": "Mỏ khoáng",
+      "options": [
+        {
+          "key": "rounds",
+          "label": "Số lượt thăm dò tối đa",
+          "type": "number",
+          "default": 3,
+          "min": 1,
+          "max": 100
+        }
+      ]
+    },
+    {
+      "id": "advanced_mine",
+      "name": "Mỏ cao cấp: tham gia hoặc mở",
+      "group": "Mỏ khoáng",
+      "options": [
+        {
+          "key": "joins",
+          "label": "Số mỏ tham gia tối đa mỗi lượt",
+          "type": "number",
+          "default": 3,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "create",
+          "label": "Mở mỏ khi không có chỗ trống",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "radars",
+          "label": "Số radar tối đa để mở mỏ",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "banquet_hotel_guest",
+      "name": "Ăn tiệc khách sạn / liên server",
+      "group": "Tiệc",
+      "options": [
+        {
+          "key": "kind",
+          "label": "Loại tiệc",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tất cả"
+            },
+            {
+              "id": "small",
+              "name": "Tiệc nhỏ"
+            },
+            {
+              "id": "big",
+              "name": "Tiệc lớn"
+            },
+            {
+              "id": "studio",
+              "name": "Tiệc Studio"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "hosts",
+          "label": "UID chủ tiệc (trống = tất cả)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "count",
+          "label": "Số bàn tối đa mỗi lượt",
+          "type": "number",
+          "default": 10,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khi chưa có bàn phù hợp",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ]
+    },
+    {
+      "id": "banquet_event_guest",
+      "name": "Ăn tiệc sự kiện",
+      "group": "Tiệc",
+      "options": [
+        {
+          "key": "kind",
+          "label": "Loại tiệc",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tất cả"
+            },
+            {
+              "id": "small",
+              "name": "Tiệc nhỏ"
+            },
+            {
+              "id": "big",
+              "name": "Tiệc lớn"
+            },
+            {
+              "id": "studio",
+              "name": "Tiệc Studio"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "hosts",
+          "label": "UID chủ tiệc (trống = tất cả)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "count",
+          "label": "Số bàn tối đa mỗi lượt",
+          "type": "number",
+          "default": 10,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khi chưa có bàn phù hợp",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ]
+    },
+    {
+      "id": "banquet_all",
+      "name": "Ăn tiệc tổng hợp",
+      "group": "Nhóm tác vụ",
+      "options": [
+        {
+          "key": "kind",
+          "label": "Loại tiệc",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tất cả"
+            },
+            {
+              "id": "small",
+              "name": "Tiệc nhỏ"
+            },
+            {
+              "id": "big",
+              "name": "Tiệc lớn"
+            },
+            {
+              "id": "studio",
+              "name": "Tiệc Studio"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "hosts",
+          "label": "UID chủ tiệc (trống = tất cả)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "count",
+          "label": "Số bàn tối đa mỗi lượt",
+          "type": "number",
+          "default": 10,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khi chưa có bàn phù hợp",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ]
+    },
+    {
+      "id": "banquet_hotel_host",
+      "name": "Mở tiệc khách sạn",
+      "group": "Tiệc",
+      "options": [
+        {
+          "key": "kind",
+          "label": "Loại tiệc",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tất cả"
+            },
+            {
+              "id": "small",
+              "name": "Tiệc nhỏ"
+            },
+            {
+              "id": "big",
+              "name": "Tiệc lớn"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "count",
+          "label": "Số tiệc tối đa (0 = hết vật phẩm)",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khách và mở tiếp",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ]
+    },
+    {
+      "id": "banquet_studio_host",
+      "name": "Mở tiệc Studio",
+      "group": "Tiệc",
+      "options": [
+        {
+          "key": "count",
+          "label": "Số tiệc tối đa",
+          "type": "number",
+          "default": 1,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "wait",
+          "label": "Chờ khách",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "waitMinutes",
+          "label": "Thời gian chờ tối đa (phút)",
+          "type": "number",
+          "default": 30,
+          "min": 1,
+          "max": 60
+        }
+      ]
+    },
+    {
+      "id": "film_cooperation",
+      "name": "Hợp tác phim",
+      "group": "Phim",
+      "options": [
+        {
+          "key": "count",
+          "label": "Số phim tối đa",
+          "type": "number",
+          "default": 3,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "maxValueK",
+          "label": "Doanh thu tối đa (nghìn/giây, 0 = tất cả)",
+          "type": "number",
+          "default": 600,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "deltaK",
+          "label": "Chênh lệch doanh thu tối đa (nghìn/giây)",
+          "type": "number",
+          "default": 100,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "pools",
+          "label": "Tìm đối tác",
+          "type": "multi",
+          "choices": [
+            {
+              "id": "1",
+              "name": "Cùng server"
+            },
+            {
+              "id": "2",
+              "name": "Liên server"
+            },
+            {
+              "id": "3",
+              "name": "Công hội"
+            }
+          ],
+          "default": [
+            "1",
+            "3"
+          ]
+        },
+        {
+          "key": "publish",
+          "label": "Đăng tìm đối tác khi chưa ghép được",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "da_ga",
+      "name": "Đá gà",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số trận tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 2000
+        }
+      ]
+    },
+    {
+      "id": "thuong_nhan_phi_phap",
+      "name": "Thương nhân phi pháp",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số trận tối đa",
+          "type": "number",
+          "default": 500,
+          "min": 1,
+          "max": 2000
+        }
+      ]
+    },
+    {
+      "id": "sieu_giong_hat",
+      "name": "Siêu giọng hát: nhận và nâng cấp",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "claim",
+          "label": "Nhận thu nhập tích lũy",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "limit",
+          "label": "Số cấp nội thất tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 0,
+          "max": 2000
+        },
+        {
+          "key": "budget",
+          "label": "Ngân sách xu giọng hát (0 = dùng số đang có)",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 9007199254740991
+        }
+      ]
+    },
+    {
+      "id": "doi_tem_lay_do",
+      "name": "Đổi tem lấy đồ",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số tem tối đa",
+          "type": "number",
+          "default": 100000,
+          "min": 1,
+          "max": 1000000
+        }
+      ]
+    },
+    {
+      "id": "thao_lap_nhan_tai",
+      "name": "Tháo / lắp nhân tài cửa hàng",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "mode",
+          "label": "Thao tác",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "both",
+              "name": "Tháo rồi lắp lại"
+            },
+            {
+              "id": "equip",
+              "name": "Chỉ lắp ô trống"
+            },
+            {
+              "id": "unequip",
+              "name": "Chỉ tháo"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "key": "shops",
+          "label": "Cửa hàng (trống = tất cả đã mở)",
+          "type": "multi",
+          "default": [],
+          "catalog": "buildings"
+        }
+      ]
+    },
+    {
+      "id": "water_tree",
+      "name": "Tưới cây / thu hoạch / thăm hội",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "waterLimit",
+          "label": "Số giọt nước tối đa",
+          "type": "number",
+          "default": 100000,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "visit",
+          "label": "Thăm và nhận quả cây thành viên hội",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "targets",
+          "label": "UID cây muốn thăm (trống = danh sách hội)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "members",
+          "label": "Số thành viên thăm tối đa",
+          "type": "number",
+          "default": 8,
+          "min": 0,
+          "max": 100
+        }
+      ]
+    },
+    {
+      "id": "game_vuon_truong",
+      "name": "Game vườn trường",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt chơi tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 2000
+        }
+      ]
+    },
+    {
+      "id": "con_duong_anh_sao",
+      "name": "Con đường ánh sao",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 2000
+        },
+        {
+          "key": "draw",
+          "label": "Quay Đêm vương miện khi có vé",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "than_bep_cho_dem",
+      "name": "Thần bếp chợ đêm",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "help",
+          "label": "Số quầy hỗ trợ tối đa",
+          "type": "number",
+          "default": 20,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "items",
+          "label": "Số món dùng tối đa",
+          "type": "number",
+          "default": 100000,
+          "min": 0,
+          "max": 1000000
+        }
+      ]
+    },
+    {
+      "id": "rua_cham_tran",
+      "name": "Rùa chạm trán",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "games",
+          "label": "Số ván tối đa",
+          "type": "number",
+          "default": 50,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "lucky",
+          "label": "Màu may mắn",
+          "type": "choice",
+          "default": "4",
+          "choices": [
+            {
+              "id": "1",
+              "name": "Xanh lá"
+            },
+            {
+              "id": "2",
+              "name": "Xanh ngọc"
+            },
+            {
+              "id": "3",
+              "name": "Xanh"
+            },
+            {
+              "id": "4",
+              "name": "Xanh đậm"
+            },
+            {
+              "id": "5",
+              "name": "Tím"
+            },
+            {
+              "id": "6",
+              "name": "Hồng"
+            },
+            {
+              "id": "7",
+              "name": "Đỏ"
+            },
+            {
+              "id": "8",
+              "name": "Cam"
+            },
+            {
+              "id": "9",
+              "name": "Nâu"
+            },
+            {
+              "id": "10",
+              "name": "Vàng"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mo_the_mua",
+      "name": "Mở thẻ mùa và nhận bộ sưu tập",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số gói tối đa",
+          "type": "number",
+          "default": 2500,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "batch",
+          "label": "Số gói mỗi lần",
+          "type": "number",
+          "default": 10,
+          "min": 1,
+          "max": 10
+        }
+      ]
     }
   ]
 }

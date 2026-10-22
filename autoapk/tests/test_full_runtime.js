@@ -47,9 +47,22 @@ test('composite uses each child settings and detects cycles', async () => {
     const h = setup(), seen = [];
     h.P.register({id: 'child', name: 'Child', options: [h.P.numOption('n', 'N', 2, 10)]}, async ctx => { seen.push(ctx.options.n); return h.P.done(1, 'child'); });
     h.P.register({id: 'parent', name: 'Parent'}, ctx => h.P.sequence(ctx, ['child', 'child']));
-    h.api.configureTask('child', {n: 5}); assert.equal((await h.api.runSelected(['parent'])).status, 'success'); assert.deepEqual(seen, [5, 5]);
+    h.api.configureTask('child', {n: 5}); assert.equal((await h.api.runSelected(['parent'])).status, 'success'); assert.deepEqual(seen, [5]);
     h.P.register({id: 'cycle', name: 'Cycle'}, ctx => ctx.runTask('cycle'));
     assert.equal((await h.api.runSelected(['cycle'])).status, 'failed');
+});
+test('selecting a composite and its child executes a successful mutation only once', async () => {
+    const h = setup(); let count = 0;
+    h.P.register({id: 'child', name: 'Child'}, async () => { count++; return h.P.done(1, 'child'); });
+    h.P.register({id: 'parent', name: 'Parent'}, ctx => h.P.sequence(ctx, ['child']));
+    assert.equal((await h.api.runSelected(['child', 'parent'])).status, 'success'); assert.equal(count, 1);
+    await h.api.runSelected(['child']); assert.equal(count, 2);
+});
+test('explicit repeat sequence still executes the secretary-style second pass', async () => {
+    const h = setup(); let count = 0;
+    h.P.register({id: 'child', name: 'Child'}, async () => { count++; return h.P.done(1, 'child'); });
+    h.P.register({id: 'double', name: 'Double'}, ctx => h.P.sequence(ctx, ['child', 'child'], {repeatDuplicates: true}));
+    assert.equal((await h.api.runSelected(['child', 'double'])).status, 'success'); assert.equal(count, 2);
 });
 test('Stop interrupts a long sleep before the next native mutation', async () => {
     const h = setup(); let called = false;

@@ -6,7 +6,7 @@
     P.nativeScope = function (ctx, options) {
         options = options || {};
         var cache = {}, queue = Promise.resolve(), evidence = [], closed = false, fault = null, sent = 0, timers = [], removers = [];
-        var shopSpent = 0;
+        var shopSpent = 0, timeoutCounter = 0, timeouts = {};
         var window = Object.create(root), protocol = ctx.require('Protocol').Protocol, symbols = {};
         Object.keys(protocol).forEach(function (name) { if (/^S_/.test(name) && typeof protocol[name] === 'number') symbols[protocol[name]] = name; });
         function check() { ctx.check(); if (closed) throw new Error('Tác vụ đã kết thúc'); if (fault) throw fault; }
@@ -108,15 +108,17 @@
         window.__require = req; window.require = req;
         Object.defineProperty(window, '__stop_requested', {get: function () { try { check(); return false; } catch (_) { return true; } }, set: function () {}});
         window.setTimeout = function (callback, duration) {
-            ctx.sleep(duration || 0).then(function () { check(); callback(); }).catch(function () {}); return 0;
+            check(); var id = ++timeoutCounter; timeouts[id] = true;
+            ctx.sleep(duration || 0).then(function () { check(); if (timeouts[id]) { delete timeouts[id]; callback(); } }).catch(function () { delete timeouts[id]; });
+            return id;
         };
-        window.clearTimeout = function () {};
+        window.clearTimeout = function (id) { delete timeouts[id]; };
         window.setInterval = function (callback, duration) {
             check(); var id = root.setInterval(function () { try { check(); callback(); } catch (_) { root.clearInterval(id); } }, duration);
             timers.push(id); return id;
         };
         window.clearInterval = function (id) { root.clearInterval(id); };
         return {window: window, require: req, evidence: evidence, drain: function () { return queue.then(check); },
-            close: function () { closed = true; timers.forEach(function (id) { root.clearInterval(id); }); removers.forEach(function (fn) { fn(); }); }};
+            close: function () { closed = true; timeouts = {}; timers.forEach(function (id) { root.clearInterval(id); }); removers.forEach(function (fn) { fn(); }); }};
     };
 })(typeof window !== 'undefined' ? window : globalThis);

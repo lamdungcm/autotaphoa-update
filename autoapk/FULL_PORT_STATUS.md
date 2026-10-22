@@ -23,17 +23,18 @@ User đã đồng ý công khai source tại `lamdungcm/autotaphoa-update`, nhá
 
 ## Checkpoint hiện tại
 
-- `FULL_PORT_COVERAGE.json`: 58/93 hàm đã nối mã, 61 mục APK, 35 hàm còn thiếu. Đây là coverage source, không phải xác nhận game thật.
-- 112/112 kiểm tra JavaScript hiện có đạt; 18 kiểm tra mới tập trung runtime/config/transport và nhóm tác vụ thường ngày.
+- `FULL_PORT_COVERAGE.json`: 80/93 hàm đã nối mã, 84 mục APK, 13 hàm còn thiếu. Đây là coverage source, không phải xác nhận game thật.
+- 133/133 kiểm tra JavaScript hiện có đạt; 39 kiểm tra mới tập trung runtime/config/transport, nhóm ngày, cây, nhân tài, tiệc/phim và xác nhận vật phẩm sự kiện.
 - Đã có source menu cấu hình nhiều trang, chọn catalog và số lượng từng món. Chưa test UI cấu hình trên máy thật.
 - `native_features.js`: 554 module native được đóng gói thành bản sao dùng transport riêng; cần tiếp tục test các manager/worker cụ thể.
 - 19 worker sự kiện đã trích từ source PC. Handler nhiệm vụ hạn giờ đã được thay bằng bản strict riêng ở `ports_events_base.js`.
 - Mới thêm BFS mê cung Cách Cách/Bạch Xà, các mini game dùng vật phẩm, nhóm thị trấn. Phần lớn nhóm này chưa có fixture test riêng.
+- Đã bổ sung mỏ, tiệc khách sạn/sự kiện/Studio, hợp tác phim, Đá gà/Thương nhân phi pháp, Siêu giọng hát, đổi tem, nhân tài, cây, vườn trường, ánh sao, rùa, mùa thẻ, chợ đêm và nhóm mini game thị trấn. Một số nhóm mới chưa có fixture riêng; chưa kiểm chứng game thật.
 - Chưa build APK mới cho full port. Bản tám chức năng trước vẫn được giữ nguyên.
 
 ### Việc tiếp theo
 
-1. Hoàn thành 35 hàm còn thiếu trong coverage JSON (phim/tiệc, mỏ, cây, nhân tài, các sự kiện còn lại).
+1. Hoàn thành 13 hàm còn thiếu trong coverage JSON (phim/tiệc, mỏ, cây, nhân tài, các sự kiện còn lại).
 2. Tiếp tục kiểm tra và sửa worker PC có nhánh `ret == undefined`, tự gán hoàn thành hoặc fallback dựa trên việc chỉ gửi request. Transport đã chặn claim thiếu ID trả về, mua sai receipt và ngân sách shop không rõ.
 3. Test business postconditions của các nhóm mới; test UI cấu hình/cancel/đổi nhân vật, strict full-coverage audit.
 4. Build, đối chiếu toàn bộ mã nhúng ở bốn ABI, ký/alignment/manifest, đồng bộ bản test cho user tự test điện thoại.

@@ -11,9 +11,13 @@
             return ids.indexOf(Number(row.eventId)) >= 0 || type != null && cfg && Number(cfg.type) === type;
         });
     }
-    async function handle(ctx, row, answer) {
+    async function handle(ctx, row, answer, keepEvent) {
         var reply = P.ret(await P.call(ctx, 'MainEventNetUtil', 'sceneEventHandle', [row.uid, answer, '', false]));
         if (!P.reward(reply, 'rewards')) throw new Error('Chưa nhận được thưởng tương tác');
+        if (!keepEvent) {
+            delete P.model(ctx, 'MainEventMgr').eventDict[String(row.uid)];
+            P.instance(ctx, 'EventMgr').emit(ctx.require('MainEventConfig').MainEventConfig.EVENT_MAIN_EVENT_UPDATE);
+        }
         return reply;
     }
     register('bat_trom', 'Bắt trộm', ['action_bat_trom'], [], async function (ctx) {
@@ -35,7 +39,7 @@
         while (done < ctx.options.casts) {
             // Native MainEventFishGameView sends answer 1 for a successful cast.
             // fishRecord stores fish weights; it is not a list of bait quantities.
-            var reply = await handle(ctx, rows[0], 1);
+            var reply = await handle(ctx, rows[0], 1, true);
             if (!reply.fish || Number(reply.fish.fishTime) <= done) throw new Error('Lượt câu cá chưa tăng');
             var expected = P.integer(reply.fish.fishTime);
             info = P.ret(await P.call(ctx, 'MainEventNetUtil', 'requestFishInfo', [false]));
@@ -91,5 +95,43 @@
             if (!P.reward(claim)) throw new Error('Chưa nhận được thưởng Điện truyền kỳ'); count++;
         }
         return P.done(count, 'quỳ bái/nhận thưởng Điện truyền kỳ');
+    });
+    register('city_photo', 'Chụp ảnh thị trấn', [], [P.numOption('limit', 'Số lần tối đa', 1, 100, 1)], async function (ctx) {
+        var building = P.instance(ctx, 'BuildingMgr'), village = P.instance(ctx, 'VillageMgr'), events = P.instance(ctx, 'MainEventMgr');
+        if (!building.checkBuildingStatusOpened(15106)) return P.skip('Tiệm chụp ảnh chưa mở');
+        var mgr = P.instance(ctx, 'PhotoMgr'), db = ctx.require('DBUtil').DBUtil, count = 0;
+        while (count < ctx.options.limit && Number(village.getBuildingData(15106).questionNum) > 0) {
+            var old = events.getPhotoEvent(), id = old && old.questionId || mgr.getCustomerPhotoQuestion(), cfg = db.getPhotoQuestion(id);
+            if (!cfg) throw new Error('Chưa đọc được đề chụp ảnh đang mở');
+            var role = old && old.roleId || mgr.getEventCustomer(cfg), range = String(cfg.score).split('|').map(Number);
+            if (!role || range.length !== 2 || range.some(function (n) { return !Number.isSafeInteger(n) || n < 0; }) || range[0] > range[1]) throw new Error('Chưa có người mẫu hoặc khoảng điểm chụp ảnh');
+            var before = P.integer(village.getBuildingData(15106).questionNum);
+            var reply = P.ret(await P.call(ctx, 'BuildingNetUtil', 'questionHandle', [15106, P.integer(id, 1), range[0], P.id(role), false]));
+            if (!P.reward(reply) || Number(reply.num) !== before - 1) throw new Error('Chưa xác nhận lượt chụp ảnh và thưởng');
+            building.updateQuestionNum(15106, reply.num); events.savePhotoEvent(); count++;
+        }
+        return P.done(count, 'chụp ảnh', 'Chưa có lượt chụp ảnh');
+    });
+    register('city_books', 'Đọc sách thị trấn', [], [P.numOption('limit', 'Số lần tối đa', 1, 100, 1)], async function (ctx) {
+        var building = P.instance(ctx, 'BuildingMgr'), village = P.instance(ctx, 'VillageMgr'), events = P.instance(ctx, 'MainEventMgr');
+        if (!building.checkBuildingStatusOpened(15103)) return P.skip('Sạp sách chưa mở');
+        var util = ctx.require('BuildingBookstandUtil').BuildingBookstandUtil, db = ctx.require('DBUtil').DBUtil, count = 0;
+        while (count < ctx.options.limit && Number(village.getBuildingData(15103).questionNum) > 0) {
+            var old = events.getBookEvent(), setting = old && old.questionId ? null : util.getRandomBookSeting();
+            var cfg = old && old.questionId ? db.getBookstallQuestion(old.questionId) : setting && util.getQuestion(setting);
+            if (!cfg) throw new Error('Chưa đọc được câu hỏi sạp sách');
+            var answer = P.integer(cfg.bookRight, 1), before = P.integer(village.getBuildingData(15103).questionNum);
+            if (!db.getStoreSeting(answer)) throw new Error('Chưa đọc được sách đúng của câu hỏi');
+            var reply = P.ret(await P.call(ctx, 'BuildingNetUtil', 'questionHandle', [15103, P.integer(cfg.id, 1), answer, '', false]));
+            if (reply.correct !== true || !P.reward(reply) || Number(reply.num) !== before - 1) throw new Error('Chưa xác nhận đáp án đọc sách, lượt và thưởng');
+            building.updateQuestionNum(15103, reply.num); events.saveBookEvent(); count++;
+        }
+        return P.done(count, 'đọc sách', 'Chưa có lượt đọc sách');
+    });
+    P.register({id: 'city_events', name: 'Tương tác phố: trộm, vòng, ảnh, sách', group: 'Nhóm tác vụ', desktop: ['action_city_events'], timeoutMs: 900000}, function (ctx) {
+        return P.sequence(ctx, ['bat_trom', 'nem_vong', 'city_photo', 'city_books']);
+    });
+    P.register({id: 'mini_game_thi_tran', name: 'Toàn bộ mini game thị trấn', group: 'Nhóm tác vụ', desktop: ['action_mini_game_thi_tran'], timeoutMs: 3600000}, function (ctx) {
+        return P.sequence(ctx, ['cinema_quiz', 'fishing', 'thau_phuong_trai', 'hem_nua_dem', 'water_tree', 'city_events']);
     });
 })(typeof window !== 'undefined' ? window : globalThis);

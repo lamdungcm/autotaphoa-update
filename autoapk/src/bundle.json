@@ -1,5 +1,5 @@
 [
   "runtime.js", "game_schema.js", "port_kernel.js", "native_scope.js", "native_features.js",
   "tasks.js", "daily.js", "quiz_answers.js", "ports_core.js", "desktop_workers.js", "ports_workers.js",
-  "ports_day.js", "ports_town.js", "ports_maze.js", "ports_events_base.js", "menu.js"
+  "ports_day.js", "ports_town.js", "ports_maze.js", "ports_events_base.js", "ports_mines.js", "ports_banquets.js", "ports_films.js", "ports_square_singer.js", "ports_tree_heroes.js", "ports_simple_events.js", "ports_cards.js", "menu.js"
 ]

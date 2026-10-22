@@ -178,7 +178,7 @@
         var settingsSnapshot = JSON.parse(JSON.stringify(api.settings.tasks || {}));
         var selected = api.tasks.filter(function (task) { return Array.isArray(ids) && ids.indexOf(task.id) >= 0; });
         if (!selected.length) { log('Hãy chọn tác vụ cần thực hiện', 'warning'); return {status:'skipped'}; }
-        var run = active = {id: ++generation, uid: account.uid, cancelled: false, deadline: 0};
+        var run = active = {id: ++generation, uid: account.uid, cancelled: false, deadline: 0, completed: {}};
         var result = {status: 'success', tasks: [], startedAt: Date.now()};
         api.state.running = true; api.state.progress = {done: 0, total: selected.length};
         api.state.status = 'Đang thực hiện'; notify();
@@ -203,22 +203,34 @@
                     }
                 };
                 var stack = [task.id];
-                ctx.runTask = async function (id, overrides) {
+                ctx.runTask = async function (id, overrides, invocation) {
                     check(run);
                     var child = api.tasks.find(function (item) { return item.id === id; });
                     if (!child || stack.indexOf(id) >= 0) throw error('Không thực hiện được nhóm chức năng này', 'unsupported');
                     var prior = ctx.options, childOptions = taskOptions(child, overrides || settingsSnapshot[id]);
+                    var key = id + ':' + JSON.stringify(childOptions);
+                    if (!(invocation && invocation.repeat) && !child.repeatWithinRun && run.completed[key])
+                        return {status: 'already_done', message: 'Đã thực hiện trong cùng lượt chạy'};
                     stack.push(id);
                     ctx.options = childOptions;
-                    try { var outcome = await child.run(ctx); check(run); return outcome; }
+                    try {
+                        var outcome = await child.run(ctx); check(run);
+                        if (!outcome || ['success', 'already_done', 'skipped'].indexOf(outcome.status) < 0) throw error('Tác vụ con chưa xác nhận kết quả', 'unverified');
+                        if (outcome.status === 'success') run.completed[key] = true;
+                        log(child.name + ': ' + friendly(outcome.message), outcome.status === 'success' ? 'success' : 'info');
+                        return outcome;
+                    }
                     finally { stack.pop(); ctx.options = prior; }
                 };
                 try {
                     ctx.options = taskOptions(task, settingsSnapshot[task.id]);
-                    var value = await task.run(ctx);
+                    var taskKey = task.id + ':' + JSON.stringify(ctx.options);
+                    var value = !task.repeatWithinRun && run.completed[taskKey] ?
+                        {status: 'already_done', message: 'Đã thực hiện trong cùng lượt chạy'} : await task.run(ctx);
                     check(run);
                     if (!value || ['success', 'already_done', 'skipped'].indexOf(value.status) < 0)
                         throw error('Tác vụ chưa xác nhận được kết quả', 'unverified');
+                    if (value.status === 'success') run.completed[taskKey] = true;
                     result.tasks.push({id: task.id, status: value.status, message: friendly(value.message)});
                     log(task.name + ': ' + friendly(value.message || 'Đã xác nhận kết quả'), value.status === 'skipped' ? 'info' : 'success');
                 } catch (e) {

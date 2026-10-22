@@ -19,6 +19,7 @@
     register('daily_claim_all', 'Nhận nhiệm vụ và mốc ngày', ['action_daily_quick_claim'], [], function (ctx) {
         return P.sequence(ctx, ['daily_task_rewards', 'daily_active_rewards']);
     });
+    api.tasks.find(function (task) { return task.id === 'daily_claim_all'; }).repeatWithinRun = true;
     register('limited_gifts_all', 'Nhận quà hạn giờ', ['action_nhan_qua_han_gio'], [], function (ctx) {
         return P.sequence(ctx, ['county_limited', 'shop_free_gifts', 'limited_quests']);
     });
@@ -53,6 +54,7 @@
             if (String(data.workshopId) + ':' + String(data.sectionProgress) === before) throw new Error('Ải chưa tăng tiến độ');
             count++;
         }
+        await ctx.runTask('daily_claim_all');
         return P.done(count, 'vượt bước đào tạo');
     });
     register('visit_likes', 'Ghé thăm và like người chơi', ['action_visit_like'], [

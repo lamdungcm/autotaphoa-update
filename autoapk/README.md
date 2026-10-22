@@ -6,9 +6,9 @@ Permission to publish source was explicitly confirmed on 2026-10-22. Keep releas
 ## Current status
 
 Work in progress. This checkpoint is **not a full-function release** and has no new APK attached.
-The source coverage audit currently maps 58 of the 93 current desktop `action_*` methods to 61 Android tasks (some tasks are substeps/composites). 35 methods remain unmapped. See `FULL_PORT_COVERAGE.json`; mapping coverage is not proof of live game execution.
+The source coverage audit currently maps 80 of the 93 current desktop `action_*` methods to 84 Android tasks (some tasks are substeps/composites). 13 methods remain unmapped. See `FULL_PORT_COVERAGE.json`; mapping coverage is not proof of live game execution.
 
-112 JavaScript checks passed at this checkpoint. The existing APK packaging suite and real-phone testing must be repeated after all remaining ports are implemented. Most new task families still need their own fixture tests. No claim that all game features have run successfully is made.
+133 JavaScript checks passed at this checkpoint. The existing APK packaging suite and real-phone testing must be repeated after all remaining ports are implemented. Most new task families still need their own fixture tests. No claim that all game features have run successfully is made.
 
 The preceding eight-task APK is preserved locally. Do not replace it with an incomplete file named “full”.
 
