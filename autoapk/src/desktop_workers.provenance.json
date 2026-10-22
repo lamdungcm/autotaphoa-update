@@ -1,0 +1,120 @@
+{
+  "source": "capture\\action_request_engine.py",
+  "source_sha256": "5fe478c27dc6d0bdd05ac083c8cf1c22dc1ee9ae7676ba7d44bf0268265619f0",
+  "workers": [
+    {
+      "id": "do_xe",
+      "action": "action_do_xe",
+      "line": 7296,
+      "js_sha256": "6c0b6b697286000d80b749216f2723b90f7cb2053222e556238fef042d9b1dd9"
+    },
+    {
+      "id": "giao_thuong_dac_san",
+      "action": "action_giao_thuong_dac_san",
+      "line": 8474,
+      "js_sha256": "5beff294a8a7d059515b1482cdd9d34ccc7394d132520c740a4827655770e129"
+    },
+    {
+      "id": "so_han_tranh_ba",
+      "action": "action_so_han_tranh_ba",
+      "line": 8835,
+      "js_sha256": "10ea5c2ee8263c89f685ab3a3bea43bf63a324485a87f361ed26bc3fac9bdb16"
+    },
+    {
+      "id": "nho_cu_cai",
+      "action": "action_nho_cu_cai",
+      "line": 10513,
+      "js_sha256": "3e5891f686f3d42ebe5399b013e6daf7b079aa258f0824a22343896cdb32542e"
+    },
+    {
+      "id": "van_quoc_thong_thuong",
+      "action": "action_van_quoc_thong_thuong",
+      "line": 10808,
+      "js_sha256": "f0c070dfb12a62b63400f0ba3711b47a0d8c148c7b09e2edc693a928f262148f"
+    },
+    {
+      "id": "tao_minh_tinh",
+      "action": "action_tao_minh_tinh",
+      "line": 11905,
+      "js_sha256": "e675237763dc5efe1422982768b4aeeed86f65ac7cb7f91c18e7bd9a041d2722"
+    },
+    {
+      "id": "limited_quests",
+      "action": "action_limited_quests",
+      "line": 12928,
+      "js_sha256": "8eb3bb2b684b59c0fa4e0c139de9d211e6c4cbe98399ea369e9d16b769d27108"
+    },
+    {
+      "id": "guild_exp_boxes",
+      "action": "action_exp_cong_hoi_mua_manh_bua",
+      "line": 16479,
+      "js_sha256": "3a637aa41a9b407c3513fd54a05656cbf911b518bc3d2d4cc466cb03408fbf91"
+    },
+    {
+      "id": "gieng_co_phat_sang",
+      "action": "action_gieng_co_phat_sang",
+      "line": 16665,
+      "js_sha256": "81f731efa2eca5f193d6c242df763977788ba04a126b1fdc23d79d0460cf06b1"
+    },
+    {
+      "id": "tranh_ba_hai_vuc",
+      "action": "action_tranh_ba_hai_vuc",
+      "line": 16839,
+      "js_sha256": "e5d1a87aee0270c0ad36a9cb72e36f5e1bb7e4c6d49b2c3f76c2e9451a24cdc1"
+    },
+    {
+      "id": "den_hoa_cau_nguyen",
+      "action": "action_den_hoa_cau_nguyen",
+      "line": 18548,
+      "js_sha256": "150091112dd7902b9e4a8e85fa9f3c5458c49703cb419d8c5239f49fabc2524b"
+    },
+    {
+      "id": "vo_lam_forge",
+      "action": "action_vo_lam_truyen_ky",
+      "line": 18995,
+      "js_sha256": "dc0b6dc9b32862e926a1cac467c5134be5c6d53d13b65cbc5d09f156593126e9"
+    },
+    {
+      "id": "vo_lam_tower",
+      "action": "action_vo_lam_truyen_ky",
+      "line": 19276,
+      "js_sha256": "9714a3ef9b46175d7fa74a5c069a6f866a240ee7c6204b9214756ada70d141e2"
+    },
+    {
+      "id": "nghe_thuat_dan_gian",
+      "action": "action_nghe_thuat_dan_gian",
+      "line": 19856,
+      "js_sha256": "500effe6e4aaf4a6720a4dd391f38e8bdba4a393a86404aa8693ca9746a9deae"
+    },
+    {
+      "id": "di_tich_tu_linh",
+      "action": "action_di_tich_tu_linh",
+      "line": 20009,
+      "js_sha256": "9060ad2fa579ab8693010afe459afe54ba090b5a6f5676a0ce5b15fd1552e84d"
+    },
+    {
+      "id": "cong_vien_ki_thu",
+      "action": "action_cong_vien_ki_thu",
+      "line": 20288,
+      "js_sha256": "426afbe1f7e7105518fbb7efdc051513b7d8986e095d2cd89a334221ba6f16f6"
+    },
+    {
+      "id": "vo_hau_khai_quoc",
+      "action": "action_vo_hau_khai_quoc",
+      "line": 20810,
+      "js_sha256": "407851a568a496bbcdaa5821e3a310a91b86b431ed2f9a9f14ee5e12aeb32e2e"
+    },
+    {
+      "id": "the_gioi_dong_vat",
+      "action": "action_the_gioi_dong_vat",
+      "line": 21359,
+      "js_sha256": "ecfa18e6f18d91593b5f615cd58f067ccf73539992f807d6822be94bb3c72db9"
+    },
+    {
+      "id": "khoanh_khac_am_ap",
+      "action": "action_khoanh_khac_am_ap",
+      "line": 21907,
+      "js_sha256": "d41b0823c04ddc0823c2937df335a78227b12609faec7ec82981956276bb8e5c"
+    }
+  ]
+}

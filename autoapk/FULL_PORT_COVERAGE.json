@@ -1,0 +1,828 @@
+{
+  "source": "D:\\AUTO_TAPHOA\\capture\\action_request_engine.py",
+  "source_sha256": "5fe478c27dc6d0bdd05ac083c8cf1c22dc1ee9ae7676ba7d44bf0268265619f0",
+  "action_count": 93,
+  "mapped_count": 58,
+  "missing": [
+    "action_an_tiec_lien_server",
+    "action_an_tiec_lsv",
+    "action_an_tiec_su_kien",
+    "action_an_tiec_tong_hop",
+    "action_bi_kip_lam_giau",
+    "action_city_events",
+    "action_con_bao_dau_tu",
+    "action_con_duong_anh_sao",
+    "action_da_ga",
+    "action_dien_thoai_phs",
+    "action_dinh_cao_thoi_gian",
+    "action_doi_tem_lay_do",
+    "action_game_vuon_truong",
+    "action_hop_tac_phim",
+    "action_lat_bai_quyet_thang",
+    "action_mine_explore",
+    "action_mini_game_thi_tran",
+    "action_mo_cao_cap",
+    "action_mo_the_mua",
+    "action_mo_tiec_khach_san",
+    "action_mo_tiec_studio",
+    "action_nguu_ma_giang_the",
+    "action_phoi_heo_giong",
+    "action_phoi_heo_giong_request",
+    "action_quay_tranh_duong",
+    "action_rua_cham_tran",
+    "action_sieu_giong_hat",
+    "action_tay_du_ky",
+    "action_than_bep_cho_dem",
+    "action_than_do_bat_da",
+    "action_thao_lap_nhan_tai",
+    "action_thien_nu_u_hon",
+    "action_thuong_nhan_phi_phap",
+    "action_tranh_doat_mo_khoang",
+    "action_water_tree"
+  ],
+  "stale_mappings": [],
+  "duplicate_task_ids": false,
+  "source_coverage_complete": false,
+  "live_verified": false,
+  "version": "0.1.0",
+  "mapping": {
+    "action_secretary": "secretary",
+    "action_secretary_double": "secretary_double",
+    "action_advisor_money": "advisor_income",
+    "action_share_game": "share_game",
+    "action_artist_gift": "artist_gifts",
+    "action_artist_skill": "artist_skills",
+    "action_artist": "artists",
+    "action_scan_vehicle_catalog": "vehicle_catalog",
+    "action_car_improve": "car_improve",
+    "action_farm": "farm",
+    "action_studio": "studio",
+    "action_do_xe": "do_xe",
+    "action_giao_thuong_dac_san": "giao_thuong_dac_san",
+    "action_so_han_tranh_ba": "so_han_tranh_ba",
+    "action_nho_cu_cai": "nho_cu_cai",
+    "action_van_quoc_thong_thuong": "van_quoc_thong_thuong",
+    "action_tao_minh_tinh": "tao_minh_tinh",
+    "action_limited_quests": "limited_quests",
+    "action_exp_cong_hoi_mua_manh_bua": "guild_exp_boxes",
+    "action_gieng_co_phat_sang": "gieng_co_phat_sang",
+    "action_tranh_ba_hai_vuc": "tranh_ba_hai_vuc",
+    "action_den_hoa_cau_nguyen": "den_hoa_cau_nguyen",
+    "action_nghe_thuat_dan_gian": "nghe_thuat_dan_gian",
+    "action_di_tich_tu_linh": "di_tich_tu_linh",
+    "action_cong_vien_ki_thu": "cong_vien_ki_thu",
+    "action_vo_hau_khai_quoc": "vo_hau_khai_quoc",
+    "action_the_gioi_dong_vat": "the_gioi_dong_vat",
+    "action_khoanh_khac_am_ap": "khoanh_khac_am_ap",
+    "action_vo_lam_truyen_ky": "vo_lam_truyen_ky",
+    "action_claim_mail": "mail_rewards",
+    "action_daily_checkin": "daily_signin",
+    "action_mua_vu_ban_ron": "mua_vu_ban_ron",
+    "action_shop_free_gift": "shop_free_gifts",
+    "action_guild_like": "guild_likes",
+    "action_county_limited": "county_limited",
+    "action_daily_quick_claim": "daily_claim_all",
+    "action_nhan_qua_han_gio": "limited_gifts_all",
+    "action_claim_individual_mails": "mail_individual",
+    "action_training": "training",
+    "action_visit_like": "visit_likes",
+    "action_quick_buy": "quick_buy",
+    "action_quick_buy_shop": "quick_buy",
+    "action_buy_shop_item": "quick_buy",
+    "action_billionaire_shop": "billionaire_shop",
+    "action_cinema_quiz": "cinema_quiz",
+    "action_bat_trom": "bat_trom",
+    "action_nem_vong": "nem_vong",
+    "action_fishing": "fishing",
+    "action_thau_phuong_trai": "thau_phuong_trai",
+    "action_hem_nua_dem": "hem_nua_dem",
+    "action_film_legend": "film_legend",
+    "action_cach_cach_bo_tron": "cach_cach_bo_tron",
+    "action_bach_xa_truyen": "bach_xa_truyen",
+    "action_dap_anh": "dap_anh",
+    "action_nem_da": "nem_da",
+    "action_choi_day": "choi_day",
+    "action_nem_bao_cat": "nem_bao_cat",
+    "action_su_kien_daily": "su_kien_daily"
+  },
+  "tasks": [
+    {
+      "id": "mail_rewards",
+      "name": "Nhận thưởng thư",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "daily_signin",
+      "name": "Điểm danh",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "mua_vu_ban_ron",
+      "name": "Mùa Vụ Bận Rộn",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "shop_free_gifts",
+      "name": "Quà miễn phí trong tiệm",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "guild_likes",
+      "name": "Like công hội",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "daily_task_rewards",
+      "name": "Thưởng nhiệm vụ ngày",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "daily_active_rewards",
+      "name": "Mốc hoạt động ngày",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "achievement_rewards",
+      "name": "Thưởng thành tựu",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "secretary",
+      "name": "Thư ký",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "configurePromote",
+          "label": "Đổi cấu hình chiêu mộ",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "upgrade",
+          "label": "Nâng cấp",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "promote",
+          "label": "Chiêu mộ",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "promoteCount",
+          "label": "Số lần chiêu mộ",
+          "type": "number",
+          "default": 200,
+          "min": 1,
+          "max": 2000
+        }
+      ]
+    },
+    {
+      "id": "secretary_double",
+      "name": "Thư ký hai lượt",
+      "group": "Hằng ngày",
+      "options": []
+    },
+    {
+      "id": "advisor_income",
+      "name": "Nhận tiền cố vấn",
+      "group": "Hằng ngày",
+      "options": []
+    },
+    {
+      "id": "share_game",
+      "name": "Chia sẻ game",
+      "group": "Hằng ngày",
+      "options": []
+    },
+    {
+      "id": "artist_gifts",
+      "name": "Nghệ sĩ: tặng quà",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "artists",
+          "label": "Nghệ sĩ (trống = tự chọn)",
+          "type": "multi",
+          "default": [],
+          "catalog": "beauties"
+        },
+        {
+          "key": "giftId",
+          "label": "Mã vật phẩm quà",
+          "type": "number",
+          "default": 110028,
+          "min": 1,
+          "max": 999999999
+        },
+        {
+          "key": "count",
+          "label": "Tổng số quà tối đa",
+          "type": "number",
+          "default": 2,
+          "min": 0,
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "artist_skills",
+      "name": "Nghệ sĩ: kỹ năng",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "artists",
+          "label": "Nghệ sĩ (trống = tự chọn)",
+          "type": "multi",
+          "default": [],
+          "catalog": "beauties"
+        },
+        {
+          "key": "times",
+          "label": "Số lần tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "artists",
+      "name": "Nghệ sĩ: quà và kỹ năng",
+      "group": "Hằng ngày",
+      "options": []
+    },
+    {
+      "id": "vehicle_catalog",
+      "name": "Quét danh sách xe",
+      "group": "Hằng ngày",
+      "options": []
+    },
+    {
+      "id": "car_improve",
+      "name": "Cải tiến xe",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "cars",
+          "label": "Xe (trống = tự chọn)",
+          "type": "multi",
+          "default": [],
+          "catalog": "cars"
+        },
+        {
+          "key": "times",
+          "label": "Số lần tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "farm",
+      "name": "Nông trại: thu hoạch và trồng",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "sow",
+          "label": "Trồng lại sau thu hoạch",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "studio",
+      "name": "Trường quay Studio",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "quick",
+          "label": "Quay nhanh bằng lượt hiện có",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "key": "restart",
+          "label": "Bắt đầu kịch bản mới",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "key": "shots",
+          "label": "Số lượt quay tối đa mỗi phòng",
+          "type": "number",
+          "default": 100,
+          "min": 0,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "do_xe",
+      "name": "Đỗ xe và triển lãm",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "giao_thuong_dac_san",
+      "name": "Giao thương đặc sản",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "so_han_tranh_ba",
+      "name": "Sở Hán tranh bá",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "nho_cu_cai",
+      "name": "Nhổ củ cải",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt/bước tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "van_quoc_thong_thuong",
+      "name": "Vạn quốc thông thương",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt/bước tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "tao_minh_tinh",
+      "name": "Tạo minh tinh",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt/bước tối đa",
+          "type": "number",
+          "default": 600,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "limited_quests",
+      "name": "Nhiệm vụ hạn giờ",
+      "group": "Nhận thưởng",
+      "options": []
+    },
+    {
+      "id": "guild_exp_boxes",
+      "name": "EXP công hội: mua mảnh búa",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "shopBudget",
+          "label": "Ngân sách kim cương tối đa",
+          "type": "number",
+          "default": 776,
+          "min": 0,
+          "max": 100000
+        }
+      ]
+    },
+    {
+      "id": "gieng_co_phat_sang",
+      "name": "Giếng cổ phát sáng",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "tranh_ba_hai_vuc",
+      "name": "Tranh bá hải vực",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "den_hoa_cau_nguyen",
+      "name": "Đèn hoa cầu nguyện",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "vo_lam_forge",
+      "name": "Võ lâm: rèn và trang bị",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "vo_lam_tower",
+      "name": "Võ lâm: vượt tháp",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "nghe_thuat_dan_gian",
+      "name": "Nghệ thuật dân gian",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt/bước tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "di_tich_tu_linh",
+      "name": "Di tích tứ linh",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt/bước tối đa",
+          "type": "number",
+          "default": 250,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "cong_vien_ki_thu",
+      "name": "Công viên kỳ thú",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt/bước tối đa",
+          "type": "number",
+          "default": 150,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "vo_hau_khai_quoc",
+      "name": "Võ hậu khai quốc",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt/bước tối đa",
+          "type": "number",
+          "default": 40,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "the_gioi_dong_vat",
+      "name": "Thế giới động vật",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số lượt/bước tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "khoanh_khac_am_ap",
+      "name": "Khoảnh khắc ấm áp",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "vo_lam_truyen_ky",
+      "name": "Võ lâm truyền kỳ: toàn bộ",
+      "group": "Sự kiện",
+      "options": []
+    },
+    {
+      "id": "county_limited",
+      "name": "Quà ưu đãi miễn phí",
+      "group": "Hằng ngày",
+      "options": []
+    },
+    {
+      "id": "daily_claim_all",
+      "name": "Nhận nhiệm vụ và mốc ngày",
+      "group": "Hằng ngày",
+      "options": []
+    },
+    {
+      "id": "limited_gifts_all",
+      "name": "Nhận quà hạn giờ",
+      "group": "Hằng ngày",
+      "options": []
+    },
+    {
+      "id": "mail_individual",
+      "name": "Đọc thư và nhận quà từng thư",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "deleteRead",
+          "label": "Xóa thư đã đọc, đã nhận hết quà",
+          "type": "boolean",
+          "default": false
+        }
+      ]
+    },
+    {
+      "id": "training",
+      "name": "Vượt ải đào tạo",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "ticks",
+          "label": "Số ải/bước tối đa",
+          "type": "number",
+          "default": 4,
+          "min": 1,
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "visit_likes",
+      "name": "Ghé thăm và like người chơi",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "targets",
+          "label": "UID người nhận (cách nhau bởi dấu phẩy)",
+          "type": "text",
+          "default": "",
+          "maxLength": 2000
+        },
+        {
+          "key": "serverId",
+          "label": "Máy chủ (0 = hiện tại)",
+          "type": "number",
+          "default": 0,
+          "min": 0,
+          "max": 2147483647
+        }
+      ]
+    },
+    {
+      "id": "quick_buy",
+      "name": "Mua nhanh nhiều tiệm",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "orders",
+          "label": "Danh sách vật phẩm và số lượng",
+          "type": "orders",
+          "catalog": "shopGoods",
+          "default": []
+        }
+      ]
+    },
+    {
+      "id": "billionaire_shop",
+      "name": "Tiệm Ai là tỷ phú",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "count",
+          "label": "Số lượng mỗi vật phẩm tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "cinema_quiz",
+      "name": "Rạp phim: doanh thu và trắc nghiệm",
+      "group": "Hằng ngày",
+      "options": [
+        {
+          "key": "rounds",
+          "label": "Số lượt thi tối đa",
+          "type": "number",
+          "default": 2,
+          "min": 0,
+          "max": 2
+        }
+      ]
+    },
+    {
+      "id": "bat_trom",
+      "name": "Bắt trộm",
+      "group": "Thị trấn",
+      "options": []
+    },
+    {
+      "id": "nem_vong",
+      "name": "Ném vòng",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "answer",
+          "label": "Mức ném vòng",
+          "type": "number",
+          "default": 2,
+          "min": 1,
+          "max": 3
+        }
+      ]
+    },
+    {
+      "id": "fishing",
+      "name": "Câu cá thị trấn",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "casts",
+          "label": "Tổng lượt câu trong ngày",
+          "type": "number",
+          "default": 3,
+          "min": 0,
+          "max": 3
+        }
+      ]
+    },
+    {
+      "id": "thau_phuong_trai",
+      "name": "Thấu Phương Trại",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "rolls",
+          "label": "Số lượt tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 100
+        }
+      ]
+    },
+    {
+      "id": "hem_nua_dem",
+      "name": "Hẻm nửa đêm",
+      "group": "Thị trấn",
+      "options": [
+        {
+          "key": "hunts",
+          "label": "Số lượt bắt ma tối đa",
+          "type": "number",
+          "default": 5,
+          "min": 0,
+          "max": 100
+        }
+      ]
+    },
+    {
+      "id": "film_legend",
+      "name": "Điện truyền kỳ: quỳ bái và thưởng",
+      "group": "Thị trấn",
+      "options": []
+    },
+    {
+      "id": "cach_cach_bo_tron",
+      "name": "Cách Cách bỏ trốn",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "moves",
+          "label": "Số bước/thao tác tối đa",
+          "type": "number",
+          "default": 250,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội khi chưa có",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "bach_xa_truyen",
+      "name": "Bạch Xà truyện",
+      "group": "Sự kiện",
+      "options": [
+        {
+          "key": "moves",
+          "label": "Số bước/thao tác tối đa",
+          "type": "number",
+          "default": 250,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "autoTeam",
+          "label": "Tìm hoặc tạo đội khi chưa có",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "dap_anh",
+      "name": "Đập ảnh",
+      "group": "Mini game ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số vật phẩm tối đa mỗi lượt",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "nem_da",
+      "name": "Ném đá",
+      "group": "Mini game ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số vật phẩm tối đa mỗi lượt",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "choi_day",
+      "name": "Chơi dây",
+      "group": "Mini game ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số vật phẩm tối đa mỗi lượt",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "nem_bao_cat",
+      "name": "Ném bao cát",
+      "group": "Mini game ngày",
+      "options": [
+        {
+          "key": "limit",
+          "label": "Số vật phẩm tối đa mỗi lượt",
+          "type": "number",
+          "default": 300,
+          "min": 0,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "su_kien_daily",
+      "name": "Sự kiện mini hằng ngày: tất cả",
+      "group": "Nhóm tác vụ",
+      "options": []
+    }
+  ]
+}

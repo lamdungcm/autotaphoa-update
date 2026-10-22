@@ -1,0 +1,290 @@
+[
+  {
+    "id": "do_xe",
+    "name": "Đỗ xe và triển lãm",
+    "types": [
+      1056,
+      2001
+    ],
+    "action": "action_do_xe",
+    "var": "start_worker_js",
+    "result": "__doxe_task",
+    "done": "done",
+    "counters": [
+      "parkedCount"
+    ]
+  },
+  {
+    "id": "giao_thuong_dac_san",
+    "name": "Giao thương đặc sản",
+    "types": [
+      1023,
+      23
+    ],
+    "action": "action_giao_thuong_dac_san",
+    "var": "js_flow",
+    "result": "__gtdsExec",
+    "counters": [
+      "soldTotal",
+      "boughtTotal",
+      "gainedMilestones",
+      "dispatched"
+    ]
+  },
+  {
+    "id": "so_han_tranh_ba",
+    "name": "Sở Hán tranh bá",
+    "types": [
+      1077
+    ],
+    "action": "action_so_han_tranh_ba",
+    "var": "js_chuhan",
+    "result": "__soHanExec",
+    "counters": []
+  },
+  {
+    "id": "nho_cu_cai",
+    "name": "Nhổ củ cải",
+    "types": [
+      1035
+    ],
+    "action": "action_nho_cu_cai",
+    "var": "js_flow",
+    "result": "__carrotRes",
+    "error": "__carrotErr",
+    "counters": [
+      "turnsDone",
+      "levelsCleared"
+    ],
+    "limit": 150
+  },
+  {
+    "id": "van_quoc_thong_thuong",
+    "name": "Vạn quốc thông thương",
+    "types": [
+      1090
+    ],
+    "action": "action_van_quoc_thong_thuong",
+    "var": "js_flow",
+    "result": "__vqRes",
+    "error": "__vqErr",
+    "counters": [
+      "tradesDone",
+      "seaDone",
+      "expandsDone",
+      "upgradesDone",
+      "booksClaimed"
+    ],
+    "limit": 150
+  },
+  {
+    "id": "tao_minh_tinh",
+    "name": "Tạo minh tinh",
+    "types": [
+      1025
+    ],
+    "action": "action_tao_minh_tinh",
+    "var": "js_flow",
+    "result": "__starExecRes",
+    "error": "__starExecErr",
+    "counters": [
+      "movesDone",
+      "gamesEnded"
+    ],
+    "limit": 600
+  },
+  {
+    "id": "limited_quests",
+    "name": "Nhiệm vụ hạn giờ",
+    "types": [],
+    "action": "action_limited_quests",
+    "var": "js_code",
+    "result": "__ltdClaimRes",
+    "done": "done",
+    "counters": [
+      "count"
+    ]
+  },
+  {
+    "id": "guild_exp_boxes",
+    "name": "EXP công hội: mua mảnh búa",
+    "types": [],
+    "action": "action_exp_cong_hoi_mua_manh_bua",
+    "var": "js_code",
+    "result": "__buyExpRes",
+    "done": "done",
+    "counters": [
+      "newBuys"
+    ]
+  },
+  {
+    "id": "gieng_co_phat_sang",
+    "name": "Giếng cổ phát sáng",
+    "types": [
+      1018
+    ],
+    "action": "action_gieng_co_phat_sang",
+    "var": "js_code",
+    "result": "__digSmartRes",
+    "done": "done",
+    "counters": [
+      "dug"
+    ]
+  },
+  {
+    "id": "tranh_ba_hai_vuc",
+    "name": "Tranh bá hải vực",
+    "types": [
+      1093
+    ],
+    "action": "action_tranh_ba_hai_vuc",
+    "var": "js_code",
+    "result": "__fishSmartRes",
+    "done": "done",
+    "counters": [
+      "actions",
+      "killed"
+    ]
+  },
+  {
+    "id": "den_hoa_cau_nguyen",
+    "name": "Đèn hoa cầu nguyện",
+    "types": [
+      1068
+    ],
+    "action": "action_den_hoa_cau_nguyen",
+    "var": "js_unified",
+    "result": "_lotus_unified_res",
+    "doneGlobal": "_lotus_unified_done",
+    "counters": [
+      "claimedTasksCount",
+      "drawCount",
+      "claimedMilestones"
+    ]
+  },
+  {
+    "id": "vo_lam_forge",
+    "name": "Võ lâm: rèn và trang bị",
+    "types": [
+      1086
+    ],
+    "action": "action_vo_lam_truyen_ky",
+    "var": "js_forge_full",
+    "result": "__volam_unified_res",
+    "doneGlobal": "__volam_unified_done",
+    "counters": [
+      "forgedCount",
+      "replacedCount",
+      "levelUps",
+      "claimedTrialCount"
+    ]
+  },
+  {
+    "id": "vo_lam_tower",
+    "name": "Võ lâm: vượt tháp",
+    "types": [
+      1086
+    ],
+    "action": "action_vo_lam_truyen_ky",
+    "var": "js_tower_full",
+    "result": "__volam_tower_res",
+    "doneGlobal": "__volam_tower_done",
+    "counters": [
+      "chaptersPassed",
+      "fightsWon"
+    ]
+  },
+  {
+    "id": "nghe_thuat_dan_gian",
+    "name": "Nghệ thuật dân gian",
+    "types": [
+      1038
+    ],
+    "action": "action_nghe_thuat_dan_gian",
+    "var": "js_folk_run",
+    "result": "__folk_exec",
+    "counters": [
+      "used"
+    ],
+    "limit": 150
+  },
+  {
+    "id": "di_tich_tu_linh",
+    "name": "Di tích tứ linh",
+    "types": [
+      1074
+    ],
+    "action": "action_di_tich_tu_linh",
+    "var": "js_tl_run",
+    "result": "__tl_exec",
+    "counters": [
+      "steps",
+      "events"
+    ],
+    "limit": 250
+  },
+  {
+    "id": "cong_vien_ki_thu",
+    "name": "Công viên kỳ thú",
+    "types": [
+      1075
+    ],
+    "action": "action_cong_vien_ki_thu",
+    "var": "js_park_run",
+    "result": "__park_exec",
+    "counters": [
+      "moves"
+    ],
+    "limit": 150
+  },
+  {
+    "id": "vo_hau_khai_quoc",
+    "name": "Võ hậu khai quốc",
+    "types": [
+      1053
+    ],
+    "action": "action_vo_hau_khai_quoc",
+    "var": "js_wzt_code",
+    "result": "__wzt_result",
+    "counters": [
+      "battlesDone",
+      "quickBattles",
+      "totalUpgrades",
+      "freeShopClaimed",
+      "warfareClaimed"
+    ],
+    "limit": 40
+  },
+  {
+    "id": "the_gioi_dong_vat",
+    "name": "Thế giới động vật",
+    "types": [
+      1042
+    ],
+    "action": "action_the_gioi_dong_vat",
+    "var": "js_am_code",
+    "result": "__am_result",
+    "counters": [
+      "gamesPlayed",
+      "illustratedClaimed",
+      "levelUpCount",
+      "freeShopClaimed"
+    ],
+    "limit": 5
+  },
+  {
+    "id": "khoanh_khac_am_ap",
+    "name": "Khoảnh khắc ấm áp",
+    "types": [
+      22
+    ],
+    "action": "action_khoanh_khac_am_ap",
+    "var": "js_run",
+    "result": "__warm_exec",
+    "counters": [
+      "claimedTasks",
+      "noodlesUsed",
+      "claimedMilestones"
+    ]
+  }
+]

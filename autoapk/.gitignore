@@ -1,0 +1,6 @@
+.local/
+input/
+output/
+evidence/
+__pycache__/
+*.pyc

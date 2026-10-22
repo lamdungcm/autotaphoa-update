@@ -1,0 +1,5 @@
+[
+  "runtime.js", "game_schema.js", "port_kernel.js", "native_scope.js", "native_features.js",
+  "tasks.js", "daily.js", "quiz_answers.js", "ports_core.js", "desktop_workers.js", "ports_workers.js",
+  "ports_day.js", "ports_town.js", "ports_maze.js", "ports_events_base.js", "menu.js"
+]
